@@ -186,7 +186,7 @@ function LiteVersion() {
       <div style={styles.section}>
         <div style={styles.sectionLeft}><p style={styles.sectionLabel}>Wiring & setup</p></div>
         <div style={styles.sectionRight}>
-          <p style={styles.introPara} style={{ marginBottom: "2rem" }}>
+          <p style={{ ...styles.introPara, marginBottom: "2rem" }}>
             The ESP32-CAM needs to be programmed once via an FTDI USB-to-serial adapter before use. After programming, it runs independently from a USB power bank with no computer required.
           </p>
 
@@ -233,7 +233,7 @@ function LiteVersion() {
             <div style={styles.codeBlock}>
               https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Go to Tools → Board → Boards Manager, search "esp32" and install the Espressif package.
               Then select <em>AI Thinker ESP32-CAM</em> as your board.
               Open File → Examples → ESP32 → Camera → CameraWebServer.
@@ -448,7 +448,7 @@ function XLVersion() {
               OS: Raspberry Pi OS Lite (64-bit){"\n"}
               Storage: your microSD card
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Click the settings gear icon before writing. Enable SSH, set a username and password,
               and enter your phone's mobile hotspot name and password as the Wi-Fi credentials.
               This allows the Pi to connect to your phone automatically in the field.
@@ -463,11 +463,11 @@ function XLVersion() {
               Power the Pi via USB and SSH in from your computer:
             </p>
             <div style={styles.codeBlock}>ssh username@raspberrypi.local</div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Test the camera with:
             </p>
             <div style={styles.codeBlock}>libcamera-still -o test.jpg</div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               If a photo is saved, the camera is working correctly.
             </p>
           </Step>
@@ -480,20 +480,20 @@ function XLVersion() {
               sudo apt update{"\n"}
               sudo apt install -y ffmpeg{"\n"}
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Create a startup streaming script:
             </p>
             <div style={styles.codeBlock}>
               nano ~/stream.sh
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Paste the following:
             </p>
             <div style={styles.codeBlock}>
               {"#!/bin/bash\n"}
               {"libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:8888"}
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Make it executable and add to startup:
             </p>
             <div style={styles.codeBlock}>
@@ -502,12 +502,12 @@ function XLVersion() {
               {"# Add this line:\n"}
               {"@reboot /home/username/stream.sh"}
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               On your iPhone, install <strong style={{ color: ACCENT }}>VLC for Mobile</strong> (free).
               Open VLC → Network → enter the stream URL:
             </p>
             <div style={styles.codeBlock}>tcp/h264://[Pi IP address]:8888</div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               You should see a live 1080p stream from the Pi camera. Find the Pi's IP address via SSH with <code>hostname -I</code>.
             </p>
           </Step>
@@ -520,7 +520,7 @@ function XLVersion() {
               {"libcamera-vid -t 3600000 -o /home/username/footage.h264\n"}
               {"# Records for 1 hour. Adjust -t value (milliseconds) as needed."}
             </div>
-            <p style={styles.stepBody} style={{ marginTop: "1rem" }}>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               For time-lapse (one frame every 10 seconds for 1 hour):
             </p>
             <div style={styles.codeBlock}>
