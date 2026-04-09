@@ -21,6 +21,18 @@ export default function RootLayout({
         <meta name="viewport" content="width=1200" />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://use.typekit.net/wdn6pox.css" />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-74W8FGC9N5" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-74W8FGC9N5');
+            `,
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>
