@@ -69,15 +69,15 @@ export default function BuildPage() {
               <div>
                 <p style={styles.warningHead}>Personal protective equipment</p>
                 <p style={styles.warningBody}>
-                  Wear safety glasses when drilling. Flying metal and plastic fragments can cause serious eye injury.
-                  Wear cut-resistant gloves when handling drilled metal lids — edges are sharp.
+                  Wear safety glasses when drilling. Flying plastic fragments can cause serious eye injury.
+                  Wear gloves when handling drilled lids — edges can be sharp.
                   Work in a well-ventilated space.
                 </p>
               </div>
               <div>
                 <p style={styles.warningHead}>Microplastic disposal</p>
                 <p style={styles.warningBody}>
-                  Drilling through plastic or metal-coated lids produces fine particles. Do not drill near water or drains.
+                  Drilling through plastic lids produces fine particles. Do not drill near water or drains.
                   Collect all swarf and plastic debris on a sheet of paper or card, fold it up, and dispose of it in general waste — never rinse it down a sink or allow it into the environment.
                   This project exists to observe aquatic ecosystems — protect them from the very start.
                 </p>
@@ -364,7 +364,7 @@ function LiteVersion() {
         { title: "Rope orientation", body: "The two-colour rope system is essential. Always photograph or note which colour faces which direction before you place the camera. Without this you cannot be certain what your footage shows." },
         { title: "Shallow deployment only", body: "The Lite version relies on the jar's rubber seal, not silicone. It is suitable for depths up to 0.5m. For deeper water, use the XL version with a fully sealed lid." },
         { title: "LiPo care", body: "Always recharge via the TP4056 module — never directly. Store LiPo batteries at partial charge (around 50%) if not using for extended periods. A swollen or damaged battery should be disposed of safely, never used." },
-        { title: "Microplastic awareness", body: "Even drilling two small holes creates plastic and metal particles. Use a piece of paper beneath the work area and dispose of all debris carefully. Never work near water." },
+        { title: "Microplastic awareness", body: "Even drilling two small holes creates plastic particles. Use a piece of paper beneath the work area and dispose of all debris carefully. Never work near water." },
       ]} />
     </>
   );
