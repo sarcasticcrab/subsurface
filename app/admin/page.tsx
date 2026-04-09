@@ -7,7 +7,7 @@ import { supabaseAdmin } from "../../lib/supabaseAdmin";
 const DARK = "#2C3328";
 const LIGHT = "#DCFFC7";
 const ACCENT = "#99C555";
-const ADMIN_PASSWORD = "subsurface-admin";
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD!;
 const SESSION_KEY = "subsurface_admin_authed";
 
 const TAGS = ["Fish present", "Litter", "Clear water", "Murky water", "Aquatic plants", "Invertebrates", "Other"];
