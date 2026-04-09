@@ -86,7 +86,7 @@ export default function BuildPage() {
                 <p style={styles.warningHead}>Electrical safety</p>
                 <p style={styles.warningBody}>
                   Always disconnect the battery before wiring. Never submerge a camera that has not been fully sealed and leak-tested.
-                  Do not use mains power for underwater deployment — battery or power bank only.
+                  Do not use mains power for underwater deployment — battery only.
                 </p>
               </div>
               <div>
@@ -187,7 +187,7 @@ function LiteVersion() {
         <div style={styles.sectionLeft}><p style={styles.sectionLabel}>Wiring & setup</p></div>
         <div style={styles.sectionRight}>
           <p style={{ ...styles.introPara, marginBottom: "2rem" }}>
-            The ESP32-CAM needs to be programmed once via an FTDI USB-to-serial adapter before use. After programming, it runs independently from a USB power bank with no computer required.
+            The ESP32-CAM needs to be programmed once via an FTDI USB-to-serial adapter before use. After programming, it runs independently from the LiPo battery with no computer required.
           </p>
 
           <Step num="01" title="Connect FTDI to ESP32-CAM">
@@ -385,7 +385,7 @@ function XLVersion() {
               ["Best for", "Deeper water, longer sessions"],
               ["Housing", "IKEA 365+ 600ml"],
               ["Housing cost", "£4 each"],
-              ["Power", "USB power bank"],
+              ["Power", "LiPo battery (internal)"],
               ["Tethering", "USB-C to iPhone"],
             ].map(([k, v]) => (
               <div key={k} style={styles.specItem}>
