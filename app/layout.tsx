@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Subsurface",
   description:
     "A participatory framework that enables people to build, deploy, and use low-cost underwater cameras to observe and document aquatic environments.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
