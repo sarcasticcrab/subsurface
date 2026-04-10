@@ -405,7 +405,6 @@ function XLVersion() {
           <p style={styles.introPara}>
             The XL version uses a Raspberry Pi Zero 2W with the Camera Module 3, housed in the larger 600ml IKEA jar.
             It produces 1080p footage, supports time-lapse and motion detection, and features a live view tether via USB-C to iPhone.
-            The lid is fully sealed with silicone for deeper deployments.
           </p>
         </div>
       </div>
