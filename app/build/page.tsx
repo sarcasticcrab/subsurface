@@ -90,10 +90,11 @@ export default function BuildPage() {
                 </p>
               </div>
               <div>
-                <p style={styles.warningHead}>Cable glands and waterproofing</p>
+                <p style={styles.warningHead}>Waterproofing</p>
                 <p style={styles.warningBody}>
-                  The XL uses a PG7 waterproof cable gland to seal the USB-C cable entry. Hand-tighten only — over-tightening can crack the plastic lid.
-                  Always leak-test in a bowl of water before any field deployment.
+                  Never submerge a camera that has not been leak-tested in a bowl of water first.
+                  The XL uses a PG7 cable gland — hand-tighten only, over-tightening can crack the lid.
+                  Always allow 30 minutes of soak time before field deployment.
                 </p>
               </div>
             </div>
@@ -337,8 +338,15 @@ function LiteVersion() {
             <p style={styles.stepBody}>
               Wire the LiPo battery to the TP4056 charging module (B+ and B− terminals). The TP4056 output
               connects to the MT3608 boost converter input. The boost converter output (set to 5V) connects
-              to the ESP32-CAM's 5V and GND pins. The TP4056's USB port is used to recharge between deployments.
+              to the ESP32-CAM's 5V and GND pins.
               A 1000mAh flat LiPo fits comfortably inside the 180ml jar alongside the ESP32-CAM.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              <strong style={{ color: ACCENT }}>Charging the LiPo:</strong> The TP4056 module has a micro-USB port on its edge — this is your charging port.
+              To recharge between deployments, open the jar, locate the TP4056, and plug any standard micro-USB cable into it.
+              Connect to a USB charger or laptop. A red LED indicates charging; blue (or green, depending on module variant) indicates fully charged.
+              A 1000mAh battery typically charges fully in 1–2 hours. Do not exceed 1A charge current.
+              Never charge while the jar is sealed or submerged.
             </p>
             <div style={{ ...styles.warningBox, marginTop: "1rem" }}>
               <p style={styles.warningTitle}>⚠ LiPo safety</p>
@@ -504,7 +512,8 @@ function XLVersion() {
               This may take up to 90 seconds on first boot.
             </p>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              On macOS, open System Settings → Network — you should see a new RNDIS entry. Set it to configure IPv4 manually:
+              <strong style={{ color: ACCENT }}>On macOS:</strong> Open System Settings → Network. You should see a new RNDIS/Ethernet Gadget entry.
+              Click it, set Configure IPv4 to <em>Manually</em>, and enter:
             </p>
             <div style={styles.codeBlock}>
               {"IP Address:  192.168.7.1\n"}
@@ -512,7 +521,21 @@ function XLVersion() {
               {"Router:      192.168.7.1"}
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              SSH into the Pi:
+              Click Apply. The interface should turn green within a few seconds.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              <strong style={{ color: ACCENT }}>On Windows:</strong> Windows may not recognise the device immediately. If it appears as an unknown device in Device Manager, you need to install the RNDIS driver.
+              Open Device Manager, find the unknown device, right-click → Update Driver → Browse my computer → Let me pick → Network Adapters → Microsoft → Remote NDIS Compatible Device.
+              Once recognised, open Settings → Network & Internet → Change adapter options.
+              Right-click the RNDIS adapter → Properties → Internet Protocol Version 4 (TCP/IPv4) → Properties → Use the following IP address:
+            </p>
+            <div style={styles.codeBlock}>
+              {"IP Address:  192.168.7.1\n"}
+              {"Subnet Mask: 255.255.255.0\n"}
+              {"Default Gateway: 192.168.7.1"}
+            </div>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Click OK. Open Windows Terminal or PowerShell and SSH in:
             </p>
             <div style={styles.codeBlock}>ssh username@raspberrypi.local</div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
