@@ -286,6 +286,9 @@ function LiteVersion() {
               Drill one 4mm hole in each of the two opposing lid flaps. Thread a short length of rope through each —
               use two clearly different colours (e.g. blue and orange). Tie a knot on the inside to secure.
               <strong style={{ color: ACCENT }}> Always note which colour corresponds to which side before deploying.</strong> This is how you know where the camera is looking.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              De-burr both holes carefully using a scalpel or pocket knife — run the blade lightly around the rim to remove any raised plastic edges before threading the rope.
               Collect all plastic swarf on a sheet of paper immediately after drilling and dispose of in general waste.
             </p>
           </Step>
@@ -420,9 +423,9 @@ function XLVersion() {
             { item: "Raspberry Pi Zero 2W", cost: "£15", note: <span>From <a href="https://thepihut.com/products/raspberry-pi-zero-2" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-zero-2-w" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Includes Wi-Fi.</span> },
             { item: "Raspberry Pi Camera Module 3", cost: "£25", note: <span>12MP, autofocus. From <a href="https://thepihut.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Excellent low-light performance.</span> },
             { item: "IKEA 365+ 600ml glass jar with lid", cost: "£4", note: <span>New from <a href="https://www.ikea.com/gb/en/search/?q=365%2B+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>IKEA</a> or reused from <a href="https://www.ebay.co.uk/sch/i.html?_nkw=ikea+365+600ml+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>eBay</a> or <a href="https://www.vinted.co.uk/catalog?search_text=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Vinted</a>.</span> },
-            { item: "USB power bank (10,000mAh+)", cost: "£12–18", note: "Provides 4–6 hours of runtime. Store in a dry bag at the surface." },
+            { item: "INIU Pocket Rocket P50 Power Bank (10,000mAh)", cost: "£12–18", note: <span>45W, compact form factor, fits inside the 600ml jar. From <a href="https://www.amazon.co.uk/s?k=INIU+Pocket+Rocket+P50" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>. Provides 4–6 hours of runtime.</span> },
             { item: "Power Bank KeepAlive (Adjustable)", cost: "£7.50", note: <span>Prevents the power bank from auto-shutting off at low current draw. From <a href="https://thepihut.com/products/power-bank-keepalive-adjustable" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a>. Connect between power bank output and Pi power input.</span> },
-            { item: "USB-C cable (5m+)", cost: "£6–8", note: <span>Data tether to laptop for live view. One end will be cut — buy a cheap cable from <a href="https://www.amazon.co.uk/s?k=usb-c+cable+5m" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>, not a premium one.</span> },
+            { item: "USB-A to micro-USB cable (5m)", cost: "£6–8", note: <span>Data tether to laptop for live view. One end will be cut — buy a cheap cable from <a href="https://www.amazon.co.uk/s?k=usb+a+to+micro+usb+5m" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>, not a premium one.</span> },
             { item: "Short USB-C pigtail cable (20–30cm)", cost: "£2–3", note: <span>Connects inside the jar from the Wago terminals to the Pi's data port. Search <a href="https://www.amazon.co.uk/s?k=short+usb-c+cable+20cm" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'short USB-C cable' on Amazon</a>.</span> },
             { item: "Wago 221 MINI connectors (4-wire, x4)", cost: "£3–5", note: <span>Joins tether cable to pigtail inside the jar. One connector per wire: VCC, GND, D+, D−. Search <a href="https://www.amazon.co.uk/s?k=wago+221+mini" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Wago 221 MINI on Amazon</a>.</span> },
             { item: "Two colours of rope or paracord (1m each)", cost: "£2–3", note: "Orientation indicator — one colour per side of lid." },
@@ -451,9 +454,33 @@ function XLVersion() {
               Storage: your microSD card
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Click the settings gear icon before writing. Enable SSH and set a username and password.
-              You do not need to enter Wi-Fi credentials — the XL connects to your laptop via USB cable, not Wi-Fi.
-              Write the card, then insert it into the Pi Zero 2W.
+              Before writing, click <strong style={{ color: ACCENT }}>Edit Settings</strong> (the gear icon). Work through each tab:
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              <strong style={{ color: ACCENT }}>General tab</strong>
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "0.5rem" }}>
+              Set a hostname (e.g. <code>subsurface</code>) — this is how you'll identify the Pi on your network.
+              Set a username and a strong password — you'll use these to SSH in.
+              Leave Wi-Fi credentials blank — the XL connects via USB cable, not Wi-Fi.
+              Set your locale: timezone to <code>Europe/London</code>, keyboard layout to <code>gb</code>.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              <strong style={{ color: ACCENT }}>Services tab</strong>
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "0.5rem" }}>
+              Enable SSH. Select <em>Use password authentication</em> — this uses the username and password you just set.
+              Do not enable Raspberry Pi Connect here; it requires a desktop environment not present in the Lite image.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              <strong style={{ color: ACCENT }}>Options tab</strong>
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "0.5rem" }}>
+              Enable <em>Eject media when finished</em>. You can leave telemetry off.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Click <strong style={{ color: ACCENT }}>Save</strong>, then <strong style={{ color: ACCENT }}>Write</strong> and confirm.
+              Once complete, eject the card and insert it into the Pi Zero 2W.
             </p>
           </Step>
 
@@ -594,7 +621,10 @@ function XLVersion() {
               Thread one colour of rope through each flap and tie a knot on the inside to secure.
               Then drill one 12mm hole in the centre of the main lid area for the PG7 waterproof cable gland.
               Press the gland body through the hole from above and secure the lock nut underneath.
-              <strong style={{ color: WARN }}> Collect all swarf on paper and dispose of in general waste immediately. Never let plastic particles near water.</strong>
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              De-burr all drilled holes carefully using a scalpel or pocket knife — run the blade lightly around the rim of each hole to remove any raised plastic edges. This prevents the rope and gland from cutting into the lid over time.
+              <strong style={{ color: WARN }}> Collect all swarf and plastic debris on paper and dispose of in general waste immediately. Never let plastic particles near water.</strong>
             </p>
           </Step>
 
@@ -609,7 +639,7 @@ function XLVersion() {
 
           <Step num="08" title="Splice the tether cable and route through the gland">
             <p style={styles.stepBody}>
-              Cut the plug off one end of the long USB-C tether cable. Feed the cut end through the PG7 gland
+              Cut the micro-USB plug off one end of the 5m tether cable. Feed the cut end through the PG7 gland
               from outside the jar, leaving enough slack inside to reach the centre of the jar comfortably.
               Tighten the gland cap to grip the cable body — hand-tight only.
             </p>
