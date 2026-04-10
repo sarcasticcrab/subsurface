@@ -386,7 +386,7 @@ function XLVersion() {
               ["Housing", "IKEA 365+ 600ml"],
               ["Housing cost", "£4 each"],
               ["Power", "USB power bank (easy to recharge)"],
-              ["Tethering", "USB-C to iPhone"],
+              ["Tethering", "USB-C to laptop"],
             ].map(([k, v]) => (
               <div key={k} style={styles.specItem}>
                 <span style={styles.specKey}>{k}</span>
@@ -404,8 +404,8 @@ function XLVersion() {
           </div>
           <p style={styles.introPara}>
             The XL version uses a Raspberry Pi Zero 2W with the Camera Module 3, housed in the larger 600ml IKEA jar.
-            It produces 1080p+ footage, supports time-lapse and motion detection, and features a live view tether via USB-C to iPhone.
-            Powered by a USB power bank — straightforward to recharge between deployments. Requires a soldering iron and access to a 3D printer.
+            It produces 1080p+ footage, supports time-lapse and motion detection, and features live view via a USB-C tether to a laptop — no Wi-Fi required.
+            Powered internally by a USB power bank. Requires a soldering iron and access to a 3D printer.
           </p>
         </div>
       </div>
@@ -421,9 +421,11 @@ function XLVersion() {
             { item: "Raspberry Pi Camera Module 3", cost: "£25", note: "12MP, autofocus. Excellent low-light performance." },
             { item: "IKEA 365+ 600ml glass jar with lid", cost: "£4", note: "New or reused. eBay, Vinted, or charity shops." },
             { item: "USB power bank (10,000mAh+)", cost: "£12–18", note: "Provides 4–6 hours at surface. Store in dry bag." },
-            { item: "USB-C cable (5m+)", cost: "£6–8", note: "For tethered live view to iPhone. Also carries power." },
+            { item: "USB-C cable (5m+)", cost: "£6–8", note: "Data tether to laptop for live view. One end will be cut — buy a cheap cable, not a premium one." },
+            { item: "Short USB-C pigtail cable (20–30cm)", cost: "£2–3", note: "Connects inside the jar from the Wago terminals to the Pi's data port. Search 'short USB-C cable'." },
+            { item: "Wago 221 MINI connectors (4-wire, x4)", cost: "£3–5", note: "Joins tether cable to pigtail inside the jar. One connector per wire: VCC, GND, D+, D−." },
             { item: "Two colours of rope or paracord (1m each)", cost: "£2–3", note: "Orientation indicator — one colour per side of lid." },
-            { item: "PG7 waterproof cable gland", cost: "£1–2", note: "Fits cables 3–6.5mm diameter. Provides a watertight seal around the USB-C cable entry without adhesives." },
+            { item: "PG7 waterproof cable gland", cost: "£1–2", note: "Fits cables 3–6.5mm diameter. Grips the bare tether cable where it passes through the lid." },
             { item: "MicroSD card (32GB+, Class 10)", cost: "£6", note: "For OS and footage. UHS-1 recommended." },
             { item: "Drill + 4mm and 12mm bits", cost: "—", note: "4mm for rope holes, 12mm for PG7 gland entry in lid." },
           ]} />
@@ -439,7 +441,7 @@ function XLVersion() {
 
           <Step num="01" title="Flash the operating system">
             <p style={styles.stepBody}>
-              Download <strong style={{ color: ACCENT }}>Raspberry Pi Imager</strong> (free, raspberrypi.com/software) on your computer.
+              Download <strong style={{ color: ACCENT }}>Raspberry Pi Imager</strong> (free, raspberrypi.com/software) on your laptop.
               Insert your microSD card. In Imager, choose:
             </p>
             <div style={styles.codeBlock}>
@@ -448,22 +450,54 @@ function XLVersion() {
               Storage: your microSD card
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Click the settings gear icon before writing. Enable SSH, set a username and password,
-              and enter your phone's mobile hotspot name and password as the Wi-Fi credentials.
-              This allows the Pi to connect to your phone automatically in the field.
+              Click the settings gear icon before writing. Enable SSH and set a username and password.
+              You do not need to enter Wi-Fi credentials — the XL connects to your laptop via USB cable, not Wi-Fi.
               Write the card, then insert it into the Pi Zero 2W.
             </p>
           </Step>
 
-          <Step num="02" title="Connect the camera module">
+          <Step num="02" title="Enable USB gadget mode">
             <p style={styles.stepBody}>
-              Connect the Camera Module 3 to the Pi Zero's CSI ribbon cable port.
-              The cable connector is fragile — lift the latch gently, insert the ribbon cable (contacts facing away from the latch), and press the latch back down.
-              Power the Pi via USB and SSH in from your computer:
+              Before inserting the SD card into the Pi, re-mount it on your laptop and edit two files on the boot partition.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Open <strong style={{ color: ACCENT }}>config.txt</strong> and add this line at the very bottom:
+            </p>
+            <div style={styles.codeBlock}>dtoverlay=dwc2</div>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Open <strong style={{ color: ACCENT }}>cmdline.txt</strong>. This is a single line of text — do not add a new line.
+              Find the word <code>rootwait</code> and add the following immediately after it, with a single space before and after:
+            </p>
+            <div style={styles.codeBlock}>modules-load=dwc2,g_ether</div>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Eject the SD card safely, insert it into the Pi, then connect the Pi's data micro-USB port to your laptop using a data-capable USB cable.
+              (On the Pi Zero 2W, the data port is the one closest to the mini-HDMI port — not the power-only port at the edge.)
+              The Pi will boot and appear on your laptop as a USB ethernet device called <em>RNDIS/Ethernet Gadget</em>.
+              This may take up to 90 seconds on first boot.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              On macOS, open System Settings → Network — you should see a new RNDIS entry. Set it to configure IPv4 manually:
+            </p>
+            <div style={styles.codeBlock}>
+              {"IP Address:  192.168.7.1\n"}
+              {"Subnet Mask: 255.255.255.0\n"}
+              {"Router:      192.168.7.1"}
+            </div>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              SSH into the Pi:
             </p>
             <div style={styles.codeBlock}>ssh username@raspberrypi.local</div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Test the camera with:
+              If <code>raspberrypi.local</code> doesn't resolve, try the fixed IP instead:
+            </p>
+            <div style={styles.codeBlock}>ssh username@192.168.7.2</div>
+          </Step>
+
+          <Step num="03" title="Connect and test the camera module">
+            <p style={styles.stepBody}>
+              Connect the Camera Module 3 to the Pi Zero's CSI ribbon cable port.
+              The connector is fragile — lift the latch gently, insert the ribbon cable with contacts facing away from the latch, and press the latch back down.
+              Once SSH'd in, test the camera:
             </p>
             <div style={styles.codeBlock}>libcamera-still -o test.jpg</div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
@@ -471,20 +505,18 @@ function XLVersion() {
             </p>
           </Step>
 
-          <Step num="03" title="Configure live view streaming">
+          <Step num="04" title="Configure live view streaming">
             <p style={styles.stepBody}>
-              Install the streaming software:
+              Install the streaming software over your SSH connection:
             </p>
             <div style={styles.codeBlock}>
               sudo apt update{"\n"}
-              sudo apt install -y ffmpeg{"\n"}
+              sudo apt install -y ffmpeg
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Create a startup streaming script:
             </p>
-            <div style={styles.codeBlock}>
-              nano ~/stream.sh
-            </div>
+            <div style={styles.codeBlock}>nano ~/stream.sh</div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Paste the following:
             </p>
@@ -493,7 +525,7 @@ function XLVersion() {
               {"libcamera-vid -t 0 --inline --listen -o tcp://0.0.0.0:8888"}
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Make it executable and add to startup:
+              Make it executable and set it to run on boot:
             </p>
             <div style={styles.codeBlock}>
               {"chmod +x ~/stream.sh\n"}
@@ -502,18 +534,19 @@ function XLVersion() {
               {"@reboot /home/username/stream.sh"}
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              On your iPhone, install <strong style={{ color: ACCENT }}>VLC for Mobile</strong> (free).
-              Open VLC → Network → enter the stream URL:
+              On your laptop, install <strong style={{ color: ACCENT }}>VLC</strong> (free, videolan.org).
+              With the Pi connected via USB and booted, open VLC → Media → Open Network Stream and enter:
             </p>
-            <div style={styles.codeBlock}>tcp/h264://[Pi IP address]:8888</div>
+            <div style={styles.codeBlock}>tcp/h264://192.168.7.2:8888</div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              You should see a live 1080p stream from the Pi camera. Find the Pi's IP address via SSH with <code>hostname -I</code>.
+              You should see a live 1080p stream from the Pi camera over the USB cable — no Wi-Fi required.
+              The stream runs entirely over the USB gadget ethernet connection.
             </p>
           </Step>
 
-          <Step num="04" title="Configure recording">
+          <Step num="05" title="Configure recording">
             <p style={styles.stepBody}>
-              For standalone recording to the SD card (no phone needed), create a recording script:
+              For standalone recording to the SD card (no laptop needed once deployed), create a recording script:
             </p>
             <div style={styles.codeBlock}>
               {"libcamera-vid -t 3600000 -o /home/username/footage.h264\n"}
@@ -537,7 +570,7 @@ function XLVersion() {
         <div style={styles.sectionLeft}><p style={styles.sectionLabel}>Assembly</p></div>
         <div style={styles.sectionRight}>
 
-          <Step num="05" title="Prepare the rope and cable holes">
+          <Step num="06" title="Prepare the rope and cable holes">
             <DiagramBox>
               <svg viewBox="0 0 460 200" style={{ width: "100%", opacity: 0.85 }}>
                 <rect x="110" y="20" width="240" height="160" rx="6" stroke={ACCENT} strokeWidth="1.5" fill="none" />
@@ -564,7 +597,7 @@ function XLVersion() {
             </p>
           </Step>
 
-          <Step num="06" title="Mount the Pi and camera">
+          <Step num="07" title="Mount the Pi and camera">
             <p style={styles.stepBody}>
               Place foam padding in the base of the jar to cushion and stabilise the Pi.
               Fix the Pi with the camera ribbon facing upward. Position the Camera Module 3 face-down against the glass base,
@@ -573,38 +606,49 @@ function XLVersion() {
             </p>
           </Step>
 
-          <Step num="07" title="Route the USB-C cable through the gland">
+          <Step num="08" title="Splice the tether cable and route through the gland">
             <p style={styles.stepBody}>
-              Unscrew the PG7 gland cap and remove the rubber insert. Thread the USB-C cable through the cap,
-              then through the rubber insert, then through the gland body in the lid.
-              Pull the cable through until you have enough slack inside the jar to reach the Pi comfortably.
-              Screw the cap back onto the gland body — hand-tight only. The rubber insert compresses around the cable,
-              creating a watertight seal without any adhesive.
-              Do not overtighten — this can crack the lid or deform the seal.
+              Cut the plug off one end of the long USB-C tether cable. Feed the cut end through the PG7 gland
+              from outside the jar, leaving enough slack inside to reach the centre of the jar comfortably.
+              Tighten the gland cap to grip the cable body — hand-tight only.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Strip the outer sheath and then each individual wire inside — you should find four: VCC (red), GND (black), D+ (green), D− (white).
+              Do the same for the short USB-C pigtail cable that will connect to the Pi.
+              Join matching wires using Wago 221 MINI connectors — one connector per wire.
+              Push each pair of stripped wires into opposite sides of the connector until they click.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Connect the pigtail's intact USB-C plug to the Pi's data port.
+              The outside end of the tether cable runs up to your laptop at the surface for live view.
             </p>
           </Step>
 
-          <Step num="08" title="Power and live view test">
+          <Step num="09" title="Power and live view test">
             <DiagramBox>
               <svg viewBox="0 0 460 160" style={{ width: "100%", opacity: 0.85 }}>
                 <rect x="10" y="50" width="100" height="60" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
                 <text x="60" y="40" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">Power bank</text>
-                <text x="60" y="83" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">10,000mAh</text>
+                <text x="60" y="75" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">inside jar</text>
+                <text x="60" y="87" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">10,000mAh</text>
                 <line x1="110" y1="80" x2="190" y2="80" stroke={ACCENT} strokeWidth="2" />
-                <rect x="190" y="50" width="100" height="60" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
-                <text x="240" y="40" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">Pi in jar</text>
-                <text x="240" y="75" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">Sealed</text>
-                <line x1="290" y1="80" x2="350" y2="80" stroke={ACCENT} strokeWidth="2" />
+                <rect x="190" y="50" width="80" height="60" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
+                <text x="230" y="40" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">Pi in jar</text>
+                <text x="230" y="78" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">sealed</text>
+                <line x1="270" y1="80" x2="350" y2="80" stroke={WARN} strokeWidth="2" strokeDasharray="6,3" />
                 <rect x="350" y="50" width="100" height="60" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
-                <text x="400" y="40" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">iPhone</text>
+                <text x="400" y="40" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">Laptop</text>
                 <text x="400" y="75" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">VLC · live view</text>
-                <text x="230" y="145" textAnchor="middle" fill={LIGHT} fontSize="9" fontFamily="Georgia" opacity="0.5">Power bank → Pi (power) · Pi → iPhone (USB-C live view)</text>
+                <text x="310" y="110" textAnchor="middle" fill={WARN} fontSize="8" fontFamily="Georgia" opacity="0.7">USB tether (data)</text>
+                <text x="150" y="110" textAnchor="middle" fill={ACCENT} fontSize="8" fontFamily="Georgia" opacity="0.7">USB (power)</text>
+                <text x="230" y="148" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.4">Power bank → Pi · Pi → Laptop via USB-C tether</text>
               </svg>
             </DiagramBox>
             <p style={styles.stepBody}>
-              Connect the power bank, wait for the Pi to boot (30–60 seconds), then enable your phone's mobile hotspot.
-              The Pi will connect automatically. Open VLC on your iPhone, enter the stream URL, and verify live view is working.
-              Then submerge the sealed jar in a bowl of water for 30 minutes — watch for bubbles which indicate a leak.
+              Connect the power bank to the Pi inside the jar, and plug the tether cable into your laptop.
+              Wait for the Pi to boot (30–60 seconds) — it will appear as a USB ethernet device on your laptop.
+              Open VLC, enter the stream URL, and verify live view is working before sealing the jar.
+              Once confirmed, seal the jar and submerge in a bowl of water for 30 minutes — watch for bubbles which indicate a leak.
               Do not deploy in the field until this test passes.
             </p>
           </Step>
@@ -617,8 +661,9 @@ function XLVersion() {
       <Principles items={[
         { title: "Rope orientation", body: "As with the Lite version, the two-colour rope system tells you which way the camera is pointing. Always note or photograph which colour is on which side before deployment." },
         { title: "Heat management", body: "The Pi Zero 2W generates heat. In warm water or direct sun, limit deployments to under 2 hours. The sealed glass jar provides no active cooling." },
-        { title: "PG7 cable gland", body: "Hand-tighten the gland cap only — enough to compress the rubber insert around the cable. Over-tightening can crack the lid. Always leak-test in a bowl of water for 30 minutes before field deployment." },
-        { title: "Microplastics", body: "The XL requires more drilling than the Lite — two rope holes and one cable hole. Collect all swarf on paper and bag it for general waste. Never allow particles near water." },
+        { title: "PG7 gland and Wago splice", body: "The tether cable enters the jar through a PG7 gland — hand-tighten only. Inside, the four wires (VCC, GND, D+, D−) are joined to a short pigtail using Wago 221 MINI connectors. If live view is unstable, the Wago connections on D+ and D− are the first thing to check." },
+        { title: "USB gadget mode", body: "Live view runs over USB gadget ethernet — no Wi-Fi needed in the field. The Pi presents itself as a network adapter to your laptop over the tether cable. Make sure your laptop has VPN software disabled when connecting, as VPNs can interfere with the USB network interface." },
+        { title: "Microplastics", body: "The XL requires more drilling than the Lite — two rope holes and one cable gland hole. Collect all swarf on paper and bag it for general waste. Never allow particles near water." },
       ]} />
     </>
   );
