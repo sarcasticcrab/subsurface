@@ -167,15 +167,15 @@ function LiteVersion() {
         <div style={styles.sectionLeft}><p style={styles.sectionLabel}>Parts list</p></div>
         <div style={styles.sectionRight}>
           <PartsTable parts={[
-            { item: "ESP32-CAM module (AI Thinker)", cost: "£6–8", note: "Includes OV2640 camera. Buy from Amazon or AliExpress." },
-            { item: "FTDI USB-to-serial programmer", cost: "£3–5", note: "Required for initial firmware upload. Search 'FTDI FT232RL module'." },
-            { item: "IKEA 365+ 180ml glass jar with lid", cost: "£2", note: "New or reused. Check eBay, Vinted, or charity shops." },
-            { item: "3.7V LiPo battery (1000–2000mAh)", cost: "£5–8", note: "Slim profile fits inside the 180ml jar. Search '3.7V LiPo flat battery'. 1000mAh gives ~2hrs recording." },
-            { item: "TP4056 LiPo charging module", cost: "£1–2", note: "For safely recharging the LiPo via USB. Includes overcharge protection." },
-            { item: "3.3V–5V boost converter (MT3608)", cost: "£1–2", note: "Steps up LiPo voltage (3.7V) to 5V for the ESP32-CAM." },
+            { item: "ESP32-CAM module (AI Thinker)", cost: "£6–8", note: <span>Includes OV2640 camera. Buy from <a href="https://www.amazon.co.uk/s?k=ESP32-CAM+AI+Thinker" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a> or <a href="https://www.aliexpress.com/w/wholesale-esp32-cam-ai-thinker.html" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>AliExpress</a>.</span> },
+            { item: "FTDI USB-to-serial programmer", cost: "£3–5", note: <span>Required for initial firmware upload. Search <a href="https://www.amazon.co.uk/s?k=FTDI+FT232RL+module" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'FTDI FT232RL module'</a> on Amazon.</span> },
+            { item: "IKEA 365+ 180ml glass jar with lid", cost: "£2", note: <span>New from <a href="https://www.ikea.com/gb/en/search/?q=365%2B+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>IKEA</a> or reused from <a href="https://www.ebay.co.uk/sch/i.html?_nkw=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>eBay</a> or <a href="https://www.vinted.co.uk/catalog?search_text=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Vinted</a>.</span> },
+            { item: "3.7V LiPo battery (1000–2000mAh)", cost: "£5–8", note: <span>Slim profile fits inside the 180ml jar. Search <a href="https://www.amazon.co.uk/s?k=3.7V+LiPo+flat+battery" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'3.7V LiPo flat battery'</a>. 1000mAh gives ~2hrs recording.</span> },
+            { item: "TP4056 LiPo charging module", cost: "£1–2", note: <span>For safely recharging the LiPo via USB. Search <a href="https://www.amazon.co.uk/s?k=TP4056+module" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>TP4056 on Amazon</a>. Includes overcharge protection.</span> },
+            { item: "3.3V–5V boost converter (MT3608)", cost: "£1–2", note: <span>Steps up LiPo voltage (3.7V) to 5V for the ESP32-CAM. Search <a href="https://www.amazon.co.uk/s?k=MT3608+boost+converter" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>MT3608 on Amazon</a>.</span> },
             { item: "Two colours of thin rope or paracord (1m each)", cost: "£2–3", note: "One colour per side of lid — indicates camera direction." },
             { item: "Drill + 4mm drill bit", cost: "—", note: "For rope holes in the lid flaps. Borrow if possible." },
-            { item: "Jumper wires (female-to-female)", cost: "£2", note: "For connecting FTDI to ESP32-CAM for programming." },
+            { item: "Jumper wires (female-to-female)", cost: "£2", note: <span>For connecting FTDI to ESP32-CAM. Search <a href="https://www.amazon.co.uk/s?k=female+to+female+jumper+wires" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>jumper wires on Amazon</a>.</span> },
           ]} />
         </div>
       </div>
@@ -227,7 +227,7 @@ function LiteVersion() {
 
           <Step num="02" title="Upload the firmware">
             <p style={styles.stepBody}>
-              Download and install the <strong style={{ color: ACCENT }}>Arduino IDE</strong> (free, arduino.cc).
+              Download and install the <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener noreferrer" style={styles.partsLink}><strong style={{ color: ACCENT }}>Arduino IDE</strong></a> (free).
               In Preferences, add this URL to Additional Boards Manager URLs:
             </p>
             <div style={styles.codeBlock}>
@@ -417,16 +417,17 @@ function XLVersion() {
         <div style={styles.sectionLeft}><p style={styles.sectionLabel}>Parts list</p></div>
         <div style={styles.sectionRight}>
           <PartsTable parts={[
-            { item: "Raspberry Pi Zero 2W", cost: "£15", note: "From The Pi Hut or Pimoroni. Includes Wi-Fi." },
-            { item: "Raspberry Pi Camera Module 3", cost: "£25", note: "12MP, autofocus. Excellent low-light performance." },
-            { item: "IKEA 365+ 600ml glass jar with lid", cost: "£4", note: "New or reused. eBay, Vinted, or charity shops." },
-            { item: "USB power bank (10,000mAh+)", cost: "£12–18", note: "Provides 4–6 hours at surface. Store in dry bag." },
-            { item: "USB-C cable (5m+)", cost: "£6–8", note: "Data tether to laptop for live view. One end will be cut — buy a cheap cable, not a premium one." },
-            { item: "Short USB-C pigtail cable (20–30cm)", cost: "£2–3", note: "Connects inside the jar from the Wago terminals to the Pi's data port. Search 'short USB-C cable'." },
-            { item: "Wago 221 MINI connectors (4-wire, x4)", cost: "£3–5", note: "Joins tether cable to pigtail inside the jar. One connector per wire: VCC, GND, D+, D−." },
+            { item: "Raspberry Pi Zero 2W", cost: "£15", note: <span>From <a href="https://thepihut.com/products/raspberry-pi-zero-2" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-zero-2-w" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Includes Wi-Fi.</span> },
+            { item: "Raspberry Pi Camera Module 3", cost: "£25", note: <span>12MP, autofocus. From <a href="https://thepihut.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Excellent low-light performance.</span> },
+            { item: "IKEA 365+ 600ml glass jar with lid", cost: "£4", note: <span>New from <a href="https://www.ikea.com/gb/en/search/?q=365%2B+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>IKEA</a> or reused from <a href="https://www.ebay.co.uk/sch/i.html?_nkw=ikea+365+600ml+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>eBay</a> or <a href="https://www.vinted.co.uk/catalog?search_text=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Vinted</a>.</span> },
+            { item: "USB power bank (10,000mAh+)", cost: "£12–18", note: "Provides 4–6 hours of runtime. Store in a dry bag at the surface." },
+            { item: "Power Bank KeepAlive (Adjustable)", cost: "£7.50", note: <span>Prevents the power bank from auto-shutting off at low current draw. From <a href="https://thepihut.com/products/power-bank-keepalive-adjustable" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a>. Connect between power bank output and Pi power input.</span> },
+            { item: "USB-C cable (5m+)", cost: "£6–8", note: <span>Data tether to laptop for live view. One end will be cut — buy a cheap cable from <a href="https://www.amazon.co.uk/s?k=usb-c+cable+5m" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>, not a premium one.</span> },
+            { item: "Short USB-C pigtail cable (20–30cm)", cost: "£2–3", note: <span>Connects inside the jar from the Wago terminals to the Pi's data port. Search <a href="https://www.amazon.co.uk/s?k=short+usb-c+cable+20cm" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'short USB-C cable' on Amazon</a>.</span> },
+            { item: "Wago 221 MINI connectors (4-wire, x4)", cost: "£3–5", note: <span>Joins tether cable to pigtail inside the jar. One connector per wire: VCC, GND, D+, D−. Search <a href="https://www.amazon.co.uk/s?k=wago+221+mini" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Wago 221 MINI on Amazon</a>.</span> },
             { item: "Two colours of rope or paracord (1m each)", cost: "£2–3", note: "Orientation indicator — one colour per side of lid." },
-            { item: "PG7 waterproof cable gland", cost: "£1–2", note: "Fits cables 3–6.5mm diameter. Grips the bare tether cable where it passes through the lid." },
-            { item: "MicroSD card (32GB+, Class 10)", cost: "£6", note: "For OS and footage. UHS-1 recommended." },
+            { item: "PG7 waterproof cable gland", cost: "£1–2", note: <span>Fits cables 3–6.5mm diameter. Search <a href="https://www.amazon.co.uk/s?k=PG7+cable+gland+waterproof" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>PG7 cable gland on Amazon</a>.</span> },
+            { item: "MicroSD card (32GB+, Class 10)", cost: "£6", note: <span>For OS and footage. UHS-1 recommended. Search <a href="https://www.amazon.co.uk/s?k=32gb+microsd+class+10+UHS-1" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>microSD UHS-1 on Amazon</a>.</span> },
             { item: "Drill + 4mm and 12mm bits", cost: "—", note: "4mm for rope holes, 12mm for PG7 gland entry in lid." },
           ]} />
         </div>
@@ -441,7 +442,7 @@ function XLVersion() {
 
           <Step num="01" title="Flash the operating system">
             <p style={styles.stepBody}>
-              Download <strong style={{ color: ACCENT }}>Raspberry Pi Imager</strong> (free, raspberrypi.com/software) on your laptop.
+              Download <a href="https://www.raspberrypi.com/software/" target="_blank" rel="noopener noreferrer" style={styles.partsLink}><strong style={{ color: ACCENT }}>Raspberry Pi Imager</strong></a> (free) on your laptop.
               Insert your microSD card. In Imager, choose:
             </p>
             <div style={styles.codeBlock}>
@@ -534,7 +535,7 @@ function XLVersion() {
               {"@reboot /home/username/stream.sh"}
             </div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              On your laptop, install <strong style={{ color: ACCENT }}>VLC</strong> (free, videolan.org).
+              On your laptop, install <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener noreferrer" style={styles.partsLink}><strong style={{ color: ACCENT }}>VLC</strong></a> (free).
               With the Pi connected via USB and booted, open VLC → Media → Open Network Stream and enter:
             </p>
             <div style={styles.codeBlock}>tcp/h264://192.168.7.2:8888</div>
@@ -671,7 +672,7 @@ function XLVersion() {
 
 // ── Shared components ──
 
-function PartsTable({ parts }: { parts: { item: string; cost: string; note: string; link?: string }[] }) {
+function PartsTable({ parts }: { parts: { item: string; cost: string; note: string | React.ReactNode; link?: string }[] }) {
   return (
     <table style={styles.partsTable}>
       <thead>
