@@ -34,7 +34,7 @@ export default function BuildPage() {
           <h1 style={styles.heroTitle}>Build the camera</h1>
           <p style={styles.heroBody}>
             A low-cost underwater camera using off-the-shelf components and a repurposed glass jar.
-            No specialist tools required. Two versions — choose based on your budget and experience.
+            Two versions — choose based on your budget, experience, and how much kit you have access to.
           </p>
         </div>
         <div style={styles.toggle}>
@@ -90,10 +90,10 @@ export default function BuildPage() {
                 </p>
               </div>
               <div>
-                <p style={styles.warningHead}>Silicone and adhesives</p>
+                <p style={styles.warningHead}>Cable glands and waterproofing</p>
                 <p style={styles.warningBody}>
-                  Use only aquarium-safe silicone sealant near water. Standard bathroom or construction sealants can leach chemicals harmful to aquatic life.
-                  Allow full 24-hour cure time before any water contact.
+                  The XL uses a PG7 waterproof cable gland to seal the USB-C cable entry. Hand-tighten only — over-tightening can crack the plastic lid.
+                  Always leak-test in a bowl of water before any field deployment.
                 </p>
               </div>
             </div>
@@ -155,7 +155,7 @@ function LiteVersion() {
           <p style={styles.introPara}>
             The Lite version uses an ESP32-CAM microcontroller — a single board with a built-in camera, Wi-Fi,
             and enough processing power to stream live video. Housed in an IKEA 365+ 180ml glass jar, it requires
-            no soldering and can be built in an afternoon. It is ideal for shallow freshwater environments.
+            no soldering and can be built in an afternoon with no specialist tools. Both versions offer equivalent waterproofing.
           </p>
         </div>
       </div>
@@ -301,9 +301,9 @@ function LiteVersion() {
 
           <Step num="06" title="Seal the jar">
             <p style={styles.stepBody}>
-              The Lite version requires no drilled cable hole and no silicone sealant.
+              The Lite version requires no drilled cable hole and no cable gland.
               The USB cable simply runs under the edge of the lid when closed — the jar's rubber seal
-              provides enough compression to make it water-resistant at shallow depths (up to 0.5m).
+              provides enough compression to make it watertight.
               Press the lid down firmly. The rope handles sit outside the jar and can be used to position and retrieve it.
             </p>
           </Step>
@@ -362,7 +362,7 @@ function LiteVersion() {
       <div style={styles.divider} />
       <Principles items={[
         { title: "Rope orientation", body: "The two-colour rope system is essential. Always photograph or note which colour faces which direction before you place the camera. Without this you cannot be certain what your footage shows." },
-        { title: "Shallow deployment only", body: "The Lite version relies on the jar's rubber seal, not silicone. It is suitable for depths up to 0.5m. For deeper water, use the XL version with a fully sealed lid." },
+        { title: "No specialist tools needed", body: "The Lite version is designed to be buildable by anyone — no soldering iron, no 3D printer, no specialist equipment. Everything is off-the-shelf and assembled by hand. The waterproofing is equivalent to the XL." },
         { title: "LiPo care", body: "Always recharge via the TP4056 module — never directly. Store LiPo batteries at partial charge (around 50%) if not using for extended periods. A swollen or damaged battery should be disposed of safely, never used." },
         { title: "Microplastic awareness", body: "Even drilling two small holes creates plastic particles. Use a piece of paper beneath the work area and dispose of all debris carefully. Never work near water." },
       ]} />
@@ -382,10 +382,10 @@ function XLVersion() {
               ["Cost", "~£45"],
               ["Quality", "1080p+"],
               ["Difficulty", "Intermediate"],
-              ["Best for", "Deeper water, longer sessions"],
+              ["Best for", "Higher quality footage, longer sessions"],
               ["Housing", "IKEA 365+ 600ml"],
               ["Housing cost", "£4 each"],
-              ["Power", "LiPo battery (internal)"],
+              ["Power", "USB power bank (easy to recharge)"],
               ["Tethering", "USB-C to iPhone"],
             ].map(([k, v]) => (
               <div key={k} style={styles.specItem}>
@@ -404,7 +404,8 @@ function XLVersion() {
           </div>
           <p style={styles.introPara}>
             The XL version uses a Raspberry Pi Zero 2W with the Camera Module 3, housed in the larger 600ml IKEA jar.
-            It produces 1080p footage, supports time-lapse and motion detection, and features a live view tether via USB-C to iPhone.
+            It produces 1080p+ footage, supports time-lapse and motion detection, and features a live view tether via USB-C to iPhone.
+            Powered by a USB power bank — straightforward to recharge between deployments. Requires a soldering iron and access to a 3D printer.
           </p>
         </div>
       </div>
@@ -422,10 +423,9 @@ function XLVersion() {
             { item: "USB power bank (10,000mAh+)", cost: "£12–18", note: "Provides 4–6 hours at surface. Store in dry bag." },
             { item: "USB-C cable (5m+)", cost: "£6–8", note: "For tethered live view to iPhone. Also carries power." },
             { item: "Two colours of rope or paracord (1m each)", cost: "£2–3", note: "Orientation indicator — one colour per side of lid." },
-            { item: "Aquarium-safe silicone sealant", cost: "£5", note: "For sealing the USB-C cable entry. Aquarium-safe only." },
-            { item: "Rubber grommet (matches cable diameter)", cost: "£1", note: "Seals cable entry through drilled hole." },
+            { item: "PG7 waterproof cable gland", cost: "£1–2", note: "Fits cables 3–6.5mm diameter. Provides a watertight seal around the USB-C cable entry without adhesives." },
             { item: "MicroSD card (32GB+, Class 10)", cost: "£6", note: "For OS and footage. UHS-1 recommended." },
-            { item: "Drill + 4mm and 8mm bits", cost: "—", note: "4mm for rope holes, 8mm for USB-C cable entry." },
+            { item: "Drill + 4mm and 12mm bits", cost: "—", note: "4mm for rope holes, 12mm for PG7 gland entry in lid." },
           ]} />
         </div>
       </div>
@@ -549,8 +549,8 @@ function XLVersion() {
                 <line x1="375" y1="100" x2="420" y2="100" stroke="#f96" strokeWidth="3" strokeLinecap="round" />
                 {/* Cable hole in lid centre */}
                 <circle cx="230" cy="100" r="10" stroke={WARN} strokeWidth="2" fill="none" />
-                <text x="230" y="75" textAnchor="middle" fill={WARN} fontSize="9" fontFamily="Georgia">8mm hole</text>
-                <text x="230" y="65" textAnchor="middle" fill={WARN} fontSize="8" fontFamily="Georgia" opacity="0.7">(USB-C cable)</text>
+                <text x="230" y="75" textAnchor="middle" fill={WARN} fontSize="9" fontFamily="Georgia">12mm hole</text>
+                <text x="230" y="65" textAnchor="middle" fill={WARN} fontSize="8" fontFamily="Georgia" opacity="0.7">(PG7 gland)</text>
                 <text x="85" y="145" textAnchor="middle" fill="#6af" fontSize="9" fontFamily="Georgia">Blue rope</text>
                 <text x="375" y="145" textAnchor="middle" fill="#f96" fontSize="9" fontFamily="Georgia">Orange rope</text>
               </svg>
@@ -558,8 +558,8 @@ function XLVersion() {
             <p style={styles.stepBody}>
               Drill two 4mm holes — one in each opposing lid flap — for the orientation ropes.
               Thread one colour of rope through each flap and tie a knot on the inside to secure.
-              Then drill one 8mm hole in the centre of the main lid area for the USB-C cable.
-              Fit a rubber grommet into this hole.
+              Then drill one 12mm hole in the centre of the main lid area for the PG7 waterproof cable gland.
+              Press the gland body through the hole from above and secure the lock nut underneath.
               <strong style={{ color: WARN }}> Collect all swarf on paper and dispose of in general waste immediately. Never let plastic particles near water.</strong>
             </p>
           </Step>
@@ -573,13 +573,14 @@ function XLVersion() {
             </p>
           </Step>
 
-          <Step num="07" title="Route the USB-C cable and seal">
+          <Step num="07" title="Route the USB-C cable through the gland">
             <p style={styles.stepBody}>
-              Thread the USB-C cable through the rubber grommet in the lid.
-              Apply a generous bead of aquarium-safe silicone around the grommet on both sides of the lid.
-              Apply a continuous bead of silicone around the inner lid rim.
-              Seal the jar and allow <strong style={{ color: ACCENT }}>minimum 24 hours cure time</strong> before any water contact.
-              Do not rush this step — a failed seal means a lost Pi.
+              Unscrew the PG7 gland cap and remove the rubber insert. Thread the USB-C cable through the cap,
+              then through the rubber insert, then through the gland body in the lid.
+              Pull the cable through until you have enough slack inside the jar to reach the Pi comfortably.
+              Screw the cap back onto the gland body — hand-tight only. The rubber insert compresses around the cable,
+              creating a watertight seal without any adhesive.
+              Do not overtighten — this can crack the lid or deform the seal.
             </p>
           </Step>
 
@@ -616,7 +617,7 @@ function XLVersion() {
       <Principles items={[
         { title: "Rope orientation", body: "As with the Lite version, the two-colour rope system tells you which way the camera is pointing. Always note or photograph which colour is on which side before deployment." },
         { title: "Heat management", body: "The Pi Zero 2W generates heat. In warm water or direct sun, limit deployments to under 2 hours. The sealed glass jar provides no active cooling." },
-        { title: "Silicone cure time", body: "24 hours is a minimum. 48 hours is safer, especially in cold weather when cure times extend. A failed seal underwater can destroy the Pi instantly." },
+        { title: "PG7 cable gland", body: "Hand-tighten the gland cap only — enough to compress the rubber insert around the cable. Over-tightening can crack the lid. Always leak-test in a bowl of water for 30 minutes before field deployment." },
         { title: "Microplastics", body: "The XL requires more drilling than the Lite — two rope holes and one cable hole. Collect all swarf on paper and bag it for general waste. Never allow particles near water." },
       ]} />
     </>
