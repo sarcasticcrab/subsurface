@@ -848,7 +848,7 @@ const styles: Record<string, CSSProperties> = {
   },
   hero: {
     display: "flex", alignItems: "flex-end",
-    padding: "8rem 4rem 4rem", gap: "4rem",
+    padding: "6rem 4rem 4rem", gap: "4rem",
   },
   heroLeft: { flex: "0 0 600px" },
   heroRight: {
