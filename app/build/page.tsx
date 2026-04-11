@@ -36,27 +36,25 @@ export default function BuildPage() {
             A low-cost underwater camera using off-the-shelf components and a repurposed glass jar.
             Two versions — choose based on your budget, experience, and how much kit you have access to.
           </p>
-          <div style={{ marginTop: "2.5rem" }}>
-            <div style={styles.toggle}>
-              <button
-                style={version === "lite" ? styles.toggleBtnActive : styles.toggleBtn}
-                onClick={() => setVersion("lite")}
-              >
-                <span style={version === "lite" ? styles.toggleNameActive : styles.toggleName}>Lite</span>
-                <span style={version === "lite" ? styles.toggleSubActive : styles.toggleSub}>ESP32-CAM · ~£15</span>
-              </button>
-              <button
-                style={version === "xl" ? styles.toggleBtnActive : styles.toggleBtn}
-                onClick={() => setVersion("xl")}
-              >
-                <span style={version === "xl" ? styles.toggleNameActive : styles.toggleName}>XL</span>
-                <span style={version === "xl" ? styles.toggleSubActive : styles.toggleSub}>Raspberry Pi · ~£45</span>
-              </button>
-            </div>
-          </div>
         </div>
         <div style={styles.heroRight}>
           <img src="/prototype-lite.png" alt="Lite prototype — ESP32-CAM in IKEA jar with two-colour rope system" style={styles.heroImg} />
+          <div style={styles.toggle}>
+            <button
+              style={version === "lite" ? styles.toggleBtnActive : styles.toggleBtn}
+              onClick={() => setVersion("lite")}
+            >
+              <span style={version === "lite" ? styles.toggleNameActive : styles.toggleName}>Lite</span>
+              <span style={version === "lite" ? styles.toggleSubActive : styles.toggleSub}>ESP32-CAM · ~£15</span>
+            </button>
+            <button
+              style={version === "xl" ? styles.toggleBtnActive : styles.toggleBtn}
+              onClick={() => setVersion("xl")}
+            >
+              <span style={version === "xl" ? styles.toggleNameActive : styles.toggleName}>XL</span>
+              <span style={version === "xl" ? styles.toggleSubActive : styles.toggleSub}>Raspberry Pi · ~£45</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -853,8 +851,8 @@ const styles: Record<string, CSSProperties> = {
     padding: "10rem 4rem 4rem", gap: "4rem", flexWrap: "wrap" as const,
   },
   heroLeft: { flex: 1, minWidth: "280px" },
-  heroRight: { flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "flex-end" },
-  heroImg: { height: "420px", width: "auto", display: "block" },
+  heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "stretch", gap: "1.5rem" },
+  heroImg: { height: "380px", width: "auto", display: "block", alignSelf: "center" },
   eyebrow: {
     fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.7rem",
     letterSpacing: "0.15em", textTransform: "uppercase" as const, color: ACCENT, marginBottom: "1rem",
@@ -869,15 +867,15 @@ const styles: Record<string, CSSProperties> = {
   },
   toggle: {
     display: "flex", gap: "1px", border: `1px solid rgba(220,255,199,0.15)`,
-    borderRadius: "2px", overflow: "hidden",
+    borderRadius: "2px", overflow: "hidden", width: "100%",
   },
   toggleBtn: {
     padding: "1.25rem 2rem", background: "rgba(220,255,199,0.04)", border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem",
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem", flex: 1,
   },
   toggleBtnActive: {
     padding: "1.25rem 2rem", background: ACCENT, border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem",
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem", flex: 1,
   },
   toggleName: {
     fontFamily: "adobe-jenson-pro-display, serif", fontWeight: 700,
