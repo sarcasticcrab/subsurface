@@ -847,12 +847,14 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none", color: LIGHT, opacity: 0.7,
   },
   hero: {
-    display: "inline-flex", alignItems: "center",
-    padding: "10rem 4rem 4rem", gap: "5rem", flexWrap: "wrap" as const,
-    minWidth: "100%",
+    display: "flex", alignItems: "center", justifyContent: "space-between",
+    padding: "10rem 4rem 4rem", gap: "4rem",
   },
-  heroLeft: { flex: "0 0 auto", width: "400px" },
-  heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "1.25rem" },
+  heroLeft: { flex: "0 0 auto", width: "440px" },
+  heroRight: {
+    flex: "0 0 auto", display: "flex", flexDirection: "column" as const,
+    alignItems: "flex-start", gap: "1.25rem",
+  },
   heroImg: { height: "320px", width: "auto", display: "block" },
   eyebrow: {
     fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.7rem",
@@ -868,15 +870,15 @@ const styles: Record<string, CSSProperties> = {
   },
   toggle: {
     display: "flex", gap: "1px", border: `1px solid rgba(220,255,199,0.15)`,
-    borderRadius: "2px", overflow: "hidden",
+    borderRadius: "2px", overflow: "hidden", alignSelf: "stretch" as const,
   },
   toggleBtn: {
     padding: "0.85rem 1.5rem", background: "rgba(220,255,199,0.04)", border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.25rem",
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.25rem", flex: 1,
   },
   toggleBtnActive: {
     padding: "0.85rem 1.5rem", background: ACCENT, border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.25rem",
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.25rem", flex: 1,
   },
   toggleName: {
     fontFamily: "adobe-jenson-pro-display, serif", fontWeight: 700,
