@@ -847,8 +847,8 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none", color: LIGHT, opacity: 0.7,
   },
   hero: {
-    display: "flex", alignItems: "center",
-    padding: "12rem 4rem 4rem", gap: "4rem",
+    display: "flex", alignItems: "flex-end",
+    padding: "8rem 4rem 4rem", gap: "4rem",
   },
   heroLeft: { flex: "0 0 600px" },
   heroRight: {
