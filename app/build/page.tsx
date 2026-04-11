@@ -850,7 +850,7 @@ const styles: Record<string, CSSProperties> = {
     display: "flex", alignItems: "center",
     padding: "12rem 4rem 4rem", gap: "4rem",
   },
-  heroLeft: { flex: "0 0 440px" },
+  heroLeft: { flex: "0 0 600px" },
   heroRight: {
     marginLeft: "auto",
     display: "flex", flexDirection: "column" as const,
@@ -867,7 +867,7 @@ const styles: Record<string, CSSProperties> = {
   },
   heroBody: {
     fontFamily: "adobe-jenson-pro-caption, serif", fontStyle: "italic",
-    fontSize: "1.1rem", lineHeight: 1.7, color: LIGHT, opacity: 0.75, maxWidth: "480px", margin: 0,
+    fontSize: "1.1rem", lineHeight: 1.7, color: LIGHT, opacity: 0.75, margin: 0,
   },
   toggle: {
     display: "flex", gap: "1px", border: `1px solid rgba(220,255,199,0.15)`,
