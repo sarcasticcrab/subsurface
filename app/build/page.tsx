@@ -848,11 +848,11 @@ const styles: Record<string, CSSProperties> = {
   },
   hero: {
     display: "flex", alignItems: "center", justifyContent: "space-between",
-    padding: "10rem 4rem 4rem", gap: "4rem", flexWrap: "wrap" as const,
+    padding: "10rem 4rem 4rem", gap: "2rem", flexWrap: "wrap" as const, maxWidth: "1100px",
   },
-  heroLeft: { flex: 1, minWidth: "280px" },
-  heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "stretch", gap: "1.5rem" },
-  heroImg: { height: "380px", width: "auto", display: "block", alignSelf: "center" },
+  heroLeft: { flex: 1, minWidth: "280px", maxWidth: "480px" },
+  heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "1.5rem" },
+  heroImg: { height: "340px", width: "auto", display: "block" },
   eyebrow: {
     fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.7rem",
     letterSpacing: "0.15em", textTransform: "uppercase" as const, color: ACCENT, marginBottom: "1rem",
@@ -867,15 +867,15 @@ const styles: Record<string, CSSProperties> = {
   },
   toggle: {
     display: "flex", gap: "1px", border: `1px solid rgba(220,255,199,0.15)`,
-    borderRadius: "2px", overflow: "hidden", width: "100%",
+    borderRadius: "2px", overflow: "hidden",
   },
   toggleBtn: {
     padding: "1.25rem 2rem", background: "rgba(220,255,199,0.04)", border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem", flex: 1,
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem",
   },
   toggleBtnActive: {
     padding: "1.25rem 2rem", background: ACCENT, border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem", flex: 1,
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem",
   },
   toggleName: {
     fontFamily: "adobe-jenson-pro-display, serif", fontWeight: 700,
