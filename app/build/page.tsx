@@ -847,15 +847,14 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none", color: LIGHT, opacity: 0.7,
   },
   hero: {
-    display: "grid",
-    gridTemplateColumns: "440px 320px",
-    alignItems: "center",
-    padding: "12rem 4rem 4rem", gap: "6rem",
+    display: "flex", alignItems: "center",
+    padding: "12rem 4rem 4rem", gap: "4rem",
   },
-  heroLeft: {},
+  heroLeft: { flex: "0 0 440px" },
   heroRight: {
+    marginLeft: "auto",
     display: "flex", flexDirection: "column" as const,
-    alignItems: "flex-start", gap: "1.25rem",
+    alignItems: "flex-start", gap: "1.25rem", width: "320px",
   },
   heroImg: { height: "360px", width: "auto", display: "block" },
   eyebrow: {
