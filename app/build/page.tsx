@@ -847,12 +847,13 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none", color: LIGHT, opacity: 0.7,
   },
   hero: {
-    display: "flex", alignItems: "center", justifyContent: "flex-start",
+    display: "inline-flex", alignItems: "center",
     padding: "10rem 4rem 4rem", gap: "5rem", flexWrap: "wrap" as const,
+    minWidth: "100%",
   },
-  heroLeft: { flex: "0 0 auto", width: "420px" },
-  heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "1.5rem" },
-  heroImg: { height: "340px", width: "auto", display: "block" },
+  heroLeft: { flex: "0 0 auto", width: "400px" },
+  heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "1.25rem" },
+  heroImg: { height: "320px", width: "auto", display: "block" },
   eyebrow: {
     fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.7rem",
     letterSpacing: "0.15em", textTransform: "uppercase" as const, color: ACCENT, marginBottom: "1rem",
@@ -870,12 +871,12 @@ const styles: Record<string, CSSProperties> = {
     borderRadius: "2px", overflow: "hidden",
   },
   toggleBtn: {
-    padding: "1.25rem 2rem", background: "rgba(220,255,199,0.04)", border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem",
+    padding: "0.85rem 1.5rem", background: "rgba(220,255,199,0.04)", border: "none", cursor: "pointer",
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.25rem",
   },
   toggleBtnActive: {
-    padding: "1.25rem 2rem", background: ACCENT, border: "none", cursor: "pointer",
-    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.35rem",
+    padding: "0.85rem 1.5rem", background: ACCENT, border: "none", cursor: "pointer",
+    display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "0.25rem",
   },
   toggleName: {
     fontFamily: "adobe-jenson-pro-display, serif", fontWeight: 700,
