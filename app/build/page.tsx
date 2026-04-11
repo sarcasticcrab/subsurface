@@ -127,12 +127,13 @@ function LiteVersion() {
             { item: "ESP32-CAM module (AI Thinker)", cost: "£6–8", note: <span>Includes OV2640 camera. Buy from <a href="https://www.amazon.co.uk/s?k=ESP32-CAM+AI+Thinker" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a> or <a href="https://www.aliexpress.com/w/wholesale-esp32-cam-ai-thinker.html" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>AliExpress</a>.</span> },
             { item: "FTDI USB-to-serial programmer", cost: "£3–5", note: <span>Required for initial firmware upload. Search <a href="https://www.amazon.co.uk/s?k=FTDI+FT232RL+module" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'FTDI FT232RL module'</a> on Amazon.</span> },
             { item: "IKEA 365+ 180ml glass jar with lid", cost: "£2", note: <span>New from <a href="https://www.ikea.com/gb/en/search/?q=365%2B+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>IKEA</a> or reused from <a href="https://www.ebay.co.uk/sch/i.html?_nkw=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>eBay</a> or <a href="https://www.vinted.co.uk/catalog?search_text=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Vinted</a>.</span> },
-            { item: "3.7V LiPo battery (1000–2000mAh)", cost: "£5–8", note: <span>Slim profile fits inside the 180ml jar. Search <a href="https://www.amazon.co.uk/s?k=3.7V+LiPo+flat+battery" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'3.7V LiPo flat battery'</a>. 1000mAh gives ~2hrs recording.</span> },
-            { item: "TP4056 LiPo charging module", cost: "£1–2", note: <span>For safely recharging the LiPo via USB. Search <a href="https://www.amazon.co.uk/s?k=TP4056+module" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>TP4056 on Amazon</a>. Includes overcharge protection.</span> },
-            { item: "3.3V–5V boost converter (MT3608)", cost: "£1–2", note: <span>Steps up LiPo voltage (3.7V) to 5V for the ESP32-CAM. Search <a href="https://www.amazon.co.uk/s?k=MT3608+boost+converter" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>MT3608 on Amazon</a>.</span> },
+            { item: "3.7V 1300mAh LiPo battery 883048 (JST-PH 2.0)", cost: "~£5", note: <span>8.8×30×48mm — fits inside the 180ml jar. Search <a href="https://www.aliexpress.com/w/wholesale-883048-lipo-battery-JST-PH2.html" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'883048 3.7V 1300mAh JST PH2.0'</a> on AliExpress. Confirm PH2.0 connector before ordering. Gives ~3–4hrs recording.</span> },
+            { item: "XL6019 boost converter (3–35V to 5–40V, screw terminals)", cost: "£3–5", note: <span>Steps up LiPo voltage (3.7V) to 5V for the ESP32-CAM. Screw terminals — no soldering required. Search <a href="https://www.amazon.co.uk/s?k=XL6019+boost+converter+screw+terminal" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>XL6019 on Amazon</a>. Set output to 5V before connecting.</span> },
+            { item: "1S LiPo USB charger — 6 channel, JST-PH 2.0 (Tosiicop or similar)", cost: "~£5", note: <span>Charges up to 6 batteries simultaneously via USB. Supports JST 1.25 and JST-PH 2.0. Search <a href="https://www.aliexpress.com/w/wholesale-1S-lipo-charger-6-channel-JST-PH2.html" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'1S LiPo 6 channel charger JST PH2.0'</a> on AliExpress, or find on <a href="https://www.amazon.co.uk/s?k=1S+lipo+charger+6+channel+JST+PH2" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a> for faster delivery.</span> },
             { item: "Two colours of thin rope or paracord (1m each)", cost: "£2–3", note: "One colour per side of lid — indicates camera direction." },
             { item: "Drill + 4mm drill bit", cost: "—", note: "For rope holes in the lid flaps. Borrow if possible." },
             { item: "Jumper wires (female-to-female)", cost: "£2", note: <span>For connecting FTDI to ESP32-CAM. Search <a href="https://www.amazon.co.uk/s?k=female+to+female+jumper+wires" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>jumper wires on Amazon</a>.</span> },
+            { item: "Small screwdriver (flathead)", cost: "—", note: "For tightening the XL6019 screw terminals. Most people have one." },
           ]} />
         </div>
       </div>
@@ -314,47 +315,49 @@ function LiteVersion() {
             </p>
           </Step>
 
-          <Step num="07" title="Wire and install the LiPo battery">
+          <Step num="07" title="Connect the power circuit">
             <DiagramBox>
               <svg viewBox="0 0 460 180" style={{ width: "100%", opacity: 0.85 }}>
-                <rect x="10" y="60" width="90" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
-                <text x="55" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">LiPo 3.7V</text>
-                <text x="55" y="88" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">1000–2000mAh</text>
-                <rect x="130" y="60" width="90" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
-                <text x="175" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">TP4056</text>
-                <text x="175" y="80" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">Charger /</text>
-                <text x="175" y="92" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">Protection</text>
-                <rect x="250" y="60" width="90" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
-                <text x="295" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">MT3608</text>
-                <text x="295" y="80" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">3.7V → 5V</text>
-                <rect x="370" y="60" width="80" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
-                <text x="410" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">ESP32-CAM</text>
-                <text x="410" y="88" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">5V in</text>
-                <line x1="100" y1="85" x2="130" y2="85" stroke={ACCENT} strokeWidth="1.5" />
-                <line x1="220" y1="85" x2="250" y2="85" stroke={ACCENT} strokeWidth="1.5" />
-                <line x1="340" y1="85" x2="370" y2="85" stroke={ACCENT} strokeWidth="1.5" />
-                <line x1="175" y1="110" x2="175" y2="150" stroke={ACCENT} strokeWidth="1.5" strokeDasharray="4,3" />
-                <text x="175" y="165" textAnchor="middle" fill={ACCENT} fontSize="8" fontFamily="Georgia">USB charging port</text>
+                <rect x="10" y="60" width="100" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
+                <text x="60" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">LiPo 3.7V</text>
+                <text x="60" y="80" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">JST-PH 2.0</text>
+                <text x="60" y="92" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">JST plug</text>
+                <rect x="150" y="60" width="110" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
+                <text x="205" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">XL6019</text>
+                <text x="205" y="80" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">3.7V → 5V</text>
+                <text x="205" y="92" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">screw terminals</text>
+                <rect x="310" y="60" width="130" height="50" rx="3" stroke={ACCENT} strokeWidth="1.5" fill="none" />
+                <text x="375" y="50" textAnchor="middle" fill={ACCENT} fontSize="9" fontFamily="Georgia">ESP32-CAM</text>
+                <text x="375" y="83" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">5V + GND pins</text>
+                <line x1="110" y1="85" x2="150" y2="85" stroke={ACCENT} strokeWidth="1.5" />
+                <line x1="260" y1="85" x2="310" y2="85" stroke={ACCENT} strokeWidth="1.5" />
+                <line x1="60" y1="110" x2="60" y2="150" stroke={WARN} strokeWidth="1.5" strokeDasharray="4,3" />
+                <text x="60" y="165" textAnchor="middle" fill={WARN} fontSize="8" fontFamily="Georgia">USB charger cable (to charge)</text>
               </svg>
             </DiagramBox>
             <p style={styles.stepBody}>
-              Wire the LiPo battery to the TP4056 charging module (B+ and B− terminals). The TP4056 output
-              connects to the MT3608 boost converter input. The boost converter output (set to 5V) connects
-              to the ESP32-CAM's 5V and GND pins.
-              A 1000mAh flat LiPo fits comfortably inside the 180ml jar alongside the ESP32-CAM.
+              Before connecting anything, set the XL6019 output to 5V using a small flathead screwdriver on the potentiometer.
+              Turn the pot and measure the output with a multimeter until it reads 5.0V — do this before connecting the ESP32-CAM.
             </p>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              <strong style={{ color: ACCENT }}>Charging the LiPo:</strong> The TP4056 module has a micro-USB port on its edge — this is your charging port.
-              To recharge between deployments, open the jar, locate the TP4056, and plug any standard micro-USB cable into it.
-              Connect to a USB charger or laptop. A red LED indicates charging; blue (or green, depending on module variant) indicates fully charged.
-              A 1000mAh battery typically charges fully in 1–2 hours. Do not exceed 1A charge current.
+              Strip the bare wire ends from the LiPo's SM-2Pin JST pigtail (red = positive, black = negative).
+              Insert them into the XL6019 input screw terminals (IN+ and IN−) and tighten with a screwdriver.
+              Connect short wires from the XL6019 output terminals (OUT+ and OUT−) to the ESP32-CAM's 5V and GND pins.
+              No soldering required — screw terminals grip the bare wire ends directly.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              <strong style={{ color: ACCENT }}>Charging the LiPo:</strong> When the battery is low, open the jar and unplug the LiPo's JST-PH 2.0 connector from the XL6019.
+              Plug it into any port on the 6-channel USB charger, and connect the charger's USB-A plug to any USB charger or laptop.
+              The per-port LED will indicate charging status — typically red while charging, off when full.
+              Set the charger to 0.6A for a 1300mAh battery (1C rate). A full charge takes approximately 2 hours.
               Never charge while the jar is sealed or submerged.
             </p>
             <div style={{ ...styles.warningBox, marginTop: "1rem" }}>
               <p style={styles.warningTitle}>⚠ LiPo safety</p>
               <p style={styles.warningBody}>
-                Never charge a LiPo unattended or near flammable materials. Always use the TP4056 protection circuit —
-                never connect a LiPo directly without it. Do not puncture, crush, or short-circuit LiPo cells.
+                Never charge a LiPo unattended or near flammable materials.
+                Do not puncture, crush, or short-circuit LiPo cells.
+                Always use the dedicated USB charger cable — never connect the LiPo directly to a USB port.
                 Dispose of swollen or damaged batteries at a household hazardous waste facility.
               </p>
             </div>
@@ -376,7 +379,7 @@ function LiteVersion() {
       <Principles items={[
         { title: "Rope orientation", body: "The two-colour rope system is essential. Always photograph or note which colour faces which direction before you place the camera. Without this you cannot be certain what your footage shows." },
         { title: "No specialist tools needed", body: "The Lite version is designed to be buildable by anyone — no soldering iron, no 3D printer, no specialist equipment. Everything is off-the-shelf and assembled by hand. The waterproofing is equivalent to the XL." },
-        { title: "LiPo care", body: "Always recharge via the TP4056 module — never directly. Store LiPo batteries at partial charge (around 50%) if not using for extended periods. A swollen or damaged battery should be disposed of safely, never used." },
+        { title: "LiPo care", body: "Always recharge using the dedicated 6-channel USB charger — never connect the LiPo directly to a USB port. Disconnect the JST-PH 2.0 connector from the XL6019 before charging. Store at partial charge (around 50%) if not using for extended periods. A swollen or damaged battery should be disposed of safely, never used." },
         { title: "Microplastic awareness", body: "Even drilling two small holes creates plastic particles. Use a piece of paper beneath the work area and dispose of all debris carefully. Never work near water." },
       ]} />
     </>
