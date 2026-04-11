@@ -848,14 +848,14 @@ const styles: Record<string, CSSProperties> = {
   },
   hero: {
     display: "flex", alignItems: "center", justifyContent: "space-between",
-    padding: "10rem 4rem 4rem", gap: "4rem",
+    padding: "12rem 4rem 4rem", gap: "4rem",
   },
   heroLeft: { flex: "0 0 auto", width: "440px" },
   heroRight: {
     flex: "0 0 auto", display: "flex", flexDirection: "column" as const,
-    alignItems: "flex-start", gap: "1.25rem",
+    alignItems: "flex-start", gap: "1.25rem", width: "320px",
   },
-  heroImg: { height: "320px", width: "auto", display: "block" },
+  heroImg: { height: "360px", width: "auto", display: "block" },
   eyebrow: {
     fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.7rem",
     letterSpacing: "0.15em", textTransform: "uppercase" as const, color: ACCENT, marginBottom: "1rem",
@@ -889,12 +889,14 @@ const styles: Record<string, CSSProperties> = {
     fontSize: "1.5rem", color: DARK, lineHeight: 1,
   },
   toggleSub: {
-    fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.65rem",
+    fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.6rem",
     letterSpacing: "0.08em", textTransform: "uppercase" as const, color: LIGHT, opacity: 0.5,
+    whiteSpace: "nowrap" as const,
   },
   toggleSubActive: {
-    fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.65rem",
+    fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.6rem",
     letterSpacing: "0.08em", textTransform: "uppercase" as const, color: DARK, opacity: 0.7,
+    whiteSpace: "nowrap" as const,
   },
   divider: { height: "1px", background: "rgba(220,255,199,0.1)", margin: "0 4rem" },
   section: { display: "flex", gap: "4rem", padding: "4rem", alignItems: "flex-start" },
