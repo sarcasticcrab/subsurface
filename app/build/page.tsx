@@ -847,10 +847,10 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none", color: LIGHT, opacity: 0.7,
   },
   hero: {
-    display: "flex", alignItems: "center", justifyContent: "space-between",
-    padding: "10rem 4rem 4rem", gap: "2rem", flexWrap: "wrap" as const, maxWidth: "1100px",
+    display: "flex", alignItems: "center", justifyContent: "flex-start",
+    padding: "10rem 4rem 4rem", gap: "5rem", flexWrap: "wrap" as const,
   },
-  heroLeft: { flex: 1, minWidth: "280px", maxWidth: "480px" },
+  heroLeft: { flex: "0 0 auto", width: "420px" },
   heroRight: { flex: "0 0 auto", display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: "1.5rem" },
   heroImg: { height: "340px", width: "auto", display: "block" },
   eyebrow: {
