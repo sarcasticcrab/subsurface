@@ -855,6 +855,7 @@ const styles: Record<string, CSSProperties> = {
     marginLeft: "auto",
     display: "flex", flexDirection: "column" as const,
     alignItems: "flex-start", gap: "1.25rem", width: "320px",
+    paddingTop: "5rem",
   },
   heroImg: { height: "360px", width: "auto", display: "block" },
   eyebrow: {
