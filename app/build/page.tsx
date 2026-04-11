@@ -36,69 +36,27 @@ export default function BuildPage() {
             A low-cost underwater camera using off-the-shelf components and a repurposed glass jar.
             Two versions — choose based on your budget, experience, and how much kit you have access to.
           </p>
-        </div>
-        <div style={styles.toggle}>
-          <button
-            style={version === "lite" ? styles.toggleBtnActive : styles.toggleBtn}
-            onClick={() => setVersion("lite")}
-          >
-            <span style={version === "lite" ? styles.toggleNameActive : styles.toggleName}>Lite</span>
-            <span style={version === "lite" ? styles.toggleSubActive : styles.toggleSub}>ESP32-CAM · ~£15</span>
-          </button>
-          <button
-            style={version === "xl" ? styles.toggleBtnActive : styles.toggleBtn}
-            onClick={() => setVersion("xl")}
-          >
-            <span style={version === "xl" ? styles.toggleNameActive : styles.toggleName}>XL</span>
-            <span style={version === "xl" ? styles.toggleSubActive : styles.toggleSub}>Raspberry Pi · ~£45</span>
-          </button>
-        </div>
-      </div>
-
-      <div style={styles.divider} />
-
-      {/* Safety */}
-      <div style={styles.section}>
-        <div style={styles.sectionLeft}>
-          <p style={styles.sectionLabel}>Safety first</p>
-        </div>
-        <div style={styles.sectionRight}>
-          <div style={styles.warningBox}>
-            <p style={styles.warningTitle}>⚠ Read before you begin</p>
-            <div style={styles.warningGrid}>
-              <div>
-                <p style={styles.warningHead}>Personal protective equipment</p>
-                <p style={styles.warningBody}>
-                  Wear safety glasses when drilling. Flying plastic fragments can cause serious eye injury.
-                  Wear gloves when handling drilled lids — edges can be sharp.
-                  Work in a well-ventilated space.
-                </p>
-              </div>
-              <div>
-                <p style={styles.warningHead}>Microplastic disposal</p>
-                <p style={styles.warningBody}>
-                  Drilling through plastic lids produces fine particles. Do not drill near water or drains.
-                  Collect all swarf and plastic debris on a sheet of paper or card, fold it up, and dispose of it in general waste — never rinse it down a sink or allow it into the environment.
-                  This project exists to observe aquatic ecosystems — protect them from the very start.
-                </p>
-              </div>
-              <div>
-                <p style={styles.warningHead}>Electrical safety</p>
-                <p style={styles.warningBody}>
-                  Always disconnect the battery before wiring. Never submerge a camera that has not been fully sealed and leak-tested.
-                  Do not use mains power for underwater deployment — battery only.
-                </p>
-              </div>
-              <div>
-                <p style={styles.warningHead}>Waterproofing</p>
-                <p style={styles.warningBody}>
-                  Never submerge a camera that has not been leak-tested in a bowl of water first.
-                  The XL uses a PG7 cable gland — hand-tighten only, over-tightening can crack the lid.
-                  Always allow 30 minutes of soak time before field deployment.
-                </p>
-              </div>
+          <div style={{ marginTop: "2.5rem" }}>
+            <div style={styles.toggle}>
+              <button
+                style={version === "lite" ? styles.toggleBtnActive : styles.toggleBtn}
+                onClick={() => setVersion("lite")}
+              >
+                <span style={version === "lite" ? styles.toggleNameActive : styles.toggleName}>Lite</span>
+                <span style={version === "lite" ? styles.toggleSubActive : styles.toggleSub}>ESP32-CAM · ~£15</span>
+              </button>
+              <button
+                style={version === "xl" ? styles.toggleBtnActive : styles.toggleBtn}
+                onClick={() => setVersion("xl")}
+              >
+                <span style={version === "xl" ? styles.toggleNameActive : styles.toggleName}>XL</span>
+                <span style={version === "xl" ? styles.toggleSubActive : styles.toggleSub}>Raspberry Pi · ~£45</span>
+              </button>
             </div>
           </div>
+        </div>
+        <div style={styles.heroRight}>
+          <img src="/prototype-lite.png" alt="Lite prototype — ESP32-CAM in IKEA jar with two-colour rope system" style={styles.heroImg} />
         </div>
       </div>
 
@@ -178,6 +136,52 @@ function LiteVersion() {
             { item: "Drill + 4mm drill bit", cost: "—", note: "For rope holes in the lid flaps. Borrow if possible." },
             { item: "Jumper wires (female-to-female)", cost: "£2", note: <span>For connecting FTDI to ESP32-CAM. Search <a href="https://www.amazon.co.uk/s?k=female+to+female+jumper+wires" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>jumper wires on Amazon</a>.</span> },
           ]} />
+        </div>
+      </div>
+
+      <div style={styles.divider} />
+
+      {/* Safety */}
+      <div style={styles.section}>
+        <div style={styles.sectionLeft}>
+          <p style={styles.sectionLabel}>Safety first</p>
+        </div>
+        <div style={styles.sectionRight}>
+          <div style={styles.warningBox}>
+            <p style={styles.warningTitle}>⚠ Read before you begin</p>
+            <div style={styles.warningGrid}>
+              <div>
+                <p style={styles.warningHead}>Personal protective equipment</p>
+                <p style={styles.warningBody}>
+                  Wear safety glasses when drilling. Flying plastic fragments can cause serious eye injury.
+                  Wear gloves when handling drilled lids — edges can be sharp.
+                  Work in a well-ventilated space.
+                </p>
+              </div>
+              <div>
+                <p style={styles.warningHead}>Microplastic disposal</p>
+                <p style={styles.warningBody}>
+                  Drilling through plastic lids produces fine particles. Do not drill near water or drains.
+                  Collect all swarf and plastic debris on a sheet of paper or card, fold it up, and dispose of it in general waste — never rinse it down a sink or allow it into the environment.
+                  This project exists to observe aquatic ecosystems — protect them from the very start.
+                </p>
+              </div>
+              <div>
+                <p style={styles.warningHead}>Electrical safety</p>
+                <p style={styles.warningBody}>
+                  Always disconnect the battery before wiring. Never submerge a camera that has not been fully sealed and leak-tested.
+                  Do not use mains power for underwater deployment — battery only.
+                </p>
+              </div>
+              <div>
+                <p style={styles.warningHead}>Waterproofing</p>
+                <p style={styles.warningBody}>
+                  Always leak-test in a bowl of water for 30 minutes before any field deployment.
+                  Watch for bubbles — any escaping air indicates a failed seal.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -441,6 +445,53 @@ function XLVersion() {
             { item: "MicroSD card (32GB+, Class 10)", cost: "£6", note: <span>For OS and footage. UHS-1 recommended. Search <a href="https://www.amazon.co.uk/s?k=32gb+microsd+class+10+UHS-1" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>microSD UHS-1 on Amazon</a>.</span> },
             { item: "Drill + 4mm and 12mm bits", cost: "—", note: "4mm for rope holes, 12mm for PG7 gland entry in lid." },
           ]} />
+        </div>
+      </div>
+
+      <div style={styles.divider} />
+
+      {/* Safety */}
+      <div style={styles.section}>
+        <div style={styles.sectionLeft}>
+          <p style={styles.sectionLabel}>Safety first</p>
+        </div>
+        <div style={styles.sectionRight}>
+          <div style={styles.warningBox}>
+            <p style={styles.warningTitle}>⚠ Read before you begin</p>
+            <div style={styles.warningGrid}>
+              <div>
+                <p style={styles.warningHead}>Personal protective equipment</p>
+                <p style={styles.warningBody}>
+                  Wear safety glasses when drilling. Flying plastic fragments can cause serious eye injury.
+                  Wear gloves when handling drilled lids — edges can be sharp.
+                  Work in a well-ventilated space.
+                </p>
+              </div>
+              <div>
+                <p style={styles.warningHead}>Microplastic disposal</p>
+                <p style={styles.warningBody}>
+                  Drilling through plastic lids produces fine particles. Do not drill near water or drains.
+                  Collect all swarf and plastic debris on a sheet of paper or card, fold it up, and dispose of it in general waste — never rinse it down a sink or allow it into the environment.
+                  This project exists to observe aquatic ecosystems — protect them from the very start.
+                </p>
+              </div>
+              <div>
+                <p style={styles.warningHead}>Electrical safety</p>
+                <p style={styles.warningBody}>
+                  Always disconnect power before wiring. Never submerge a camera that has not been fully sealed and leak-tested.
+                  Do not use mains power for underwater deployment — battery only.
+                </p>
+              </div>
+              <div>
+                <p style={styles.warningHead}>Waterproofing</p>
+                <p style={styles.warningBody}>
+                  The PG7 cable gland must be hand-tight only — over-tightening can crack the lid.
+                  Always leak-test in a bowl of water for 30 minutes before any field deployment.
+                  Watch for bubbles — any escaping air indicates a failed seal.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -798,10 +849,12 @@ const styles: Record<string, CSSProperties> = {
     textDecoration: "none", color: LIGHT, opacity: 0.7,
   },
   hero: {
-    display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+    display: "flex", alignItems: "center", justifyContent: "space-between",
     padding: "10rem 4rem 4rem", gap: "4rem", flexWrap: "wrap" as const,
   },
   heroLeft: { flex: 1, minWidth: "280px" },
+  heroRight: { flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "flex-end" },
+  heroImg: { height: "420px", width: "auto", display: "block" },
   eyebrow: {
     fontFamily: '"clother", sans-serif', fontWeight: 700, fontSize: "0.7rem",
     letterSpacing: "0.15em", textTransform: "uppercase" as const, color: ACCENT, marginBottom: "1rem",
