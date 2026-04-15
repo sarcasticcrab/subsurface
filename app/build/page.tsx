@@ -419,8 +419,8 @@ function XLVersion() {
             </p>
           </div>
           <p style={styles.introPara}>
-            The XL version uses a Raspberry Pi 3A+ with the Camera Module 3, housed in the larger 600ml IKEA jar.
-            It produces 1080p+ footage, supports time-lapse and motion detection, and features live view via a USB-A tether to a laptop — no Wi-Fi required.
+            The XL version uses a Raspberry Pi 3A+ with the Camera Module 3 Wide NoIR, housed in the larger 600ml IKEA jar.
+            It produces 1080p+ wide-angle footage with enhanced low-light sensitivity, illuminated by two white LEDs, with live view via a USB-A tether to a laptop — no Wi-Fi required.
             Powered internally by a USB power bank. Requires a soldering iron and access to a 3D printer.
           </p>
         </div>
@@ -434,12 +434,14 @@ function XLVersion() {
         <div style={styles.sectionRight}>
           <PartsTable parts={[
             { item: "Raspberry Pi 3A+", cost: "£25", note: <span>From <a href="https://thepihut.com/products/raspberry-pi-3-model-a-plus" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-3-a-plus" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. More powerful than the Zero 2W, with better live view performance.</span> },
-            { item: "Raspberry Pi Camera Module 3", cost: "£25", note: <span>12MP, autofocus. From <a href="https://thepihut.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Excellent low-light performance.</span> },
+            { item: "Raspberry Pi Camera Module 3 Wide NoIR", cost: "£35", note: <span>12MP, wide-angle, fixed focus, no IR filter. Wide angle suits close-range underwater scenes. NoIR increases low-light sensitivity. Note: colours will have a slight warm cast in daylight — this can be corrected in post. From <a href="https://thepihut.com/products/raspberry-pi-camera-module-3-wide-nir" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>.</span> },
+            { item: "10mm white LEDs (x2)", cost: "£1–2", note: <span>For illuminating the scene. Search <a href="https://www.amazon.co.uk/s?k=10mm+white+LED+high+brightness" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>10mm white LED on Amazon</a>. High-brightness 20,000mcd+ recommended.</span> },
+            { item: "100Ω resistors (x2)", cost: "<£1", note: "One per LED, wired in series. Limits current to ~20mA at 5V. Search '100 ohm resistor' on Amazon." },
             { item: "IKEA 365+ 600ml glass jar with lid", cost: "£4", note: <span>New from <a href="https://www.ikea.com/gb/en/search/?q=365%2B+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>IKEA</a> or reused from <a href="https://www.ebay.co.uk/sch/i.html?_nkw=ikea+365+600ml+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>eBay</a> or <a href="https://www.vinted.co.uk/catalog?search_text=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Vinted</a>.</span> },
             { item: "INIU Pocket Rocket P50 Power Bank (10,000mAh)", cost: "£12–18", note: <span>45W, compact form factor, fits inside the 600ml jar. From <a href="https://www.amazon.co.uk/s?k=INIU+Pocket+Rocket+P50" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>. Provides 4–6 hours of runtime.</span> },
             { item: "Power Bank KeepAlive (Adjustable)", cost: "£7.50", note: <span>Prevents the power bank from auto-shutting off at low current draw. From <a href="https://thepihut.com/products/power-bank-keepalive-adjustable" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a>. Connect between power bank output and Pi power input.</span> },
             { item: "USB-A to USB-A cable (5m, data-only)", cost: "£6–8", note: <span>Data tether to laptop for live view. The 5V wire must be snipped before use — buy a cheap cable from <a href="https://www.amazon.co.uk/s?k=usb+a+to+usb+a+cable+5m" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>. See wiring instructions.</span> },
-            { item: "Short USB-A pigtail cable (20–30cm)", cost: "£2–3", note: <span>Connects inside the jar from the Wago terminals to the Pi's USB-A port. Search <a href="https://www.amazon.co.uk/s?k=short+usb+a+male+cable+20cm" target="_blank" rel="noopener noreferrer" style={styles.partsLink">'short USB-A cable' on Amazon</a>.</span> },
+            { item: "Short USB-A pigtail cable (20–30cm)", cost: "£2–3", note: <span>Connects inside the jar from the Wago terminals to the Pi's USB-A port. Search <a href="https://www.amazon.co.uk/s?k=short+usb+a+male+cable+20cm" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'short USB-A cable' on Amazon</a>.</span> },
             { item: "Wago 221 MINI connectors (4-wire, x4)", cost: "£3–5", note: <span>Joins tether cable to pigtail inside the jar. One connector per wire: VCC, GND, D+, D−. Search <a href="https://www.amazon.co.uk/s?k=wago+221+mini" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Wago 221 MINI on Amazon</a>.</span> },
             { item: "Two colours of rope or paracord (1m each)", cost: "£2–3", note: "Orientation indicator — one colour per side of lid." },
             { item: "PG7 waterproof cable gland", cost: "£1–2", note: <span>Fits cables 3–6.5mm diameter. Search <a href="https://www.amazon.co.uk/s?k=PG7+cable+gland+waterproof" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>PG7 cable gland on Amazon</a>.</span> },
@@ -601,7 +603,7 @@ function XLVersion() {
 
           <Step num="03" title="Connect and test the camera module">
             <p style={styles.stepBody}>
-              Connect the Camera Module 3 to the Pi 3A+'s CSI ribbon cable port.
+              Connect the Camera Module 3 Wide NoIR to the Pi 3A+'s CSI ribbon cable port.
               The connector is fragile — lift the latch gently, insert the ribbon cable with contacts facing away from the latch, and press the latch back down.
               Once SSH'd in, test the camera:
             </p>
@@ -706,13 +708,26 @@ function XLVersion() {
             </p>
           </Step>
 
-          <Step num="07" title="Mount the Pi and camera">
+          <Step num="07" title="Mount the Pi, camera and LEDs">
             <p style={styles.stepBody}>
               Place foam padding in the base of the jar to cushion and stabilise the Pi.
-              Fix the Pi with the camera ribbon facing upward. Position the Camera Module 3 face-down against the glass base,
+              Fix the Pi with the camera ribbon facing upward. Position the Camera Module 3 Wide NoIR face-down against the glass base,
               secured with a small foam pad. The lens should be centred and as close to the glass as possible without touching.
               Route the ribbon cable neatly — avoid any sharp bends or kinks.
             </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Position the two 10mm white LEDs either side of the camera lens, facing the glass base.
+              Wire each LED in series with a 100Ω resistor, then connect both to the 5V and GND output of the power bank via the keepalive.
+              The LEDs are always-on whenever the power bank is active — no GPIO control required.
+            </p>
+            <div style={{ ...styles.warningBox, marginTop: "1rem" }}>
+              <p style={styles.warningTitle}>⚠ NoIR colour cast</p>
+              <p style={styles.warningBody}>
+                The Camera Module 3 Wide NoIR has no infrared cut filter, so it picks up IR from ambient light.
+                This produces a slight warm/pink cast in daylight footage. This is normal and can be corrected with a white balance adjustment in any video editor.
+                For accurate colour, an IR cut filter slip can be placed in front of the lens — this is an optional future upgrade.
+              </p>
+            </div>
           </Step>
 
           <Step num="08" title="Prepare and splice the tether cable">
@@ -757,7 +772,7 @@ function XLVersion() {
                 <text x="400" y="75" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.6">VLC · live view</text>
                 <text x="310" y="110" textAnchor="middle" fill={WARN} fontSize="8" fontFamily="Georgia" opacity="0.7">USB tether (data)</text>
                 <text x="150" y="110" textAnchor="middle" fill={ACCENT} fontSize="8" fontFamily="Georgia" opacity="0.7">USB (power)</text>
-                <text x="230" y="148" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.4">Power bank → Pi · Pi → Laptop via USB-C tether</text>
+                <text x="230" y="148" textAnchor="middle" fill={LIGHT} fontSize="8" fontFamily="Georgia" opacity="0.4">Power bank → Pi · Pi → Laptop via USB-A tether</text>
               </svg>
             </DiagramBox>
             <p style={styles.stepBody}>
@@ -777,6 +792,8 @@ function XLVersion() {
       <Principles items={[
         { title: "Rope orientation", body: "As with the Lite version, the two-colour rope system tells you which way the camera is pointing. Always note or photograph which colour is on which side before deployment." },
         { title: "Heat management", body: "The Pi 3A+ generates more heat than the Zero 2W under load. In warm water or direct sun, limit deployments to under 2 hours. The sealed glass jar provides no active cooling." },
+        { title: "NoIR colour cast", body: "The Camera Module 3 Wide NoIR has no IR cut filter, giving a slight warm/pink cast in daylight. This is correctable in post with a white balance adjustment. The NoIR trades colour accuracy for better low-light sensitivity — worthwhile for murky or shaded water." },
+        { title: "LED illumination", body: "The two 10mm white LEDs are wired always-on and illuminate subjects within ~20–30cm of the lens. They may cause some fish avoidance at close range. Position them as symmetrically as possible either side of the lens to minimise shadows." },
         { title: "PG7 gland and Wago splice", body: "The tether cable enters the jar through a PG7 gland — hand-tighten only. Inside, three wires (GND, D+, D−) are joined to a short pigtail using Wago 221 MINI connectors. The VCC wire is intentionally cut and isolated. If live view is unstable, the Wago connections on D+ and D− are the first thing to check." },
         { title: "USB gadget mode", body: "Live view runs over USB gadget ethernet — no Wi-Fi needed in the field. The 3A+ requires dr_mode=peripheral in config.txt to force the USB port into device mode. Make sure your laptop has VPN software disabled when connecting, as VPNs can interfere with the USB network interface." },
         { title: "5V wire", body: "The red VCC wire in the tether cable must be cut and isolated before use. The Pi is powered by the internal power bank — if the laptop also supplies 5V via the tether, two power sources will conflict. This is a one-time preparation step." },
