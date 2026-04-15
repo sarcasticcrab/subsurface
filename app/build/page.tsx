@@ -402,7 +402,7 @@ function XLVersion() {
               ["Housing", "IKEA 365+ 600ml"],
               ["Housing cost", "£4 each"],
               ["Power", "USB power bank (easy to recharge)"],
-              ["Tethering", "USB-C to laptop"],
+              ["Tethering", "USB-A to laptop"],
             ].map(([k, v]) => (
               <div key={k} style={styles.specItem}>
                 <span style={styles.specKey}>{k}</span>
@@ -419,8 +419,8 @@ function XLVersion() {
             </p>
           </div>
           <p style={styles.introPara}>
-            The XL version uses a Raspberry Pi Zero 2W with the Camera Module 3, housed in the larger 600ml IKEA jar.
-            It produces 1080p+ footage, supports time-lapse and motion detection, and features live view via a USB-C tether to a laptop — no Wi-Fi required.
+            The XL version uses a Raspberry Pi 3A+ with the Camera Module 3, housed in the larger 600ml IKEA jar.
+            It produces 1080p+ footage, supports time-lapse and motion detection, and features live view via a USB-A tether to a laptop — no Wi-Fi required.
             Powered internally by a USB power bank. Requires a soldering iron and access to a 3D printer.
           </p>
         </div>
@@ -433,13 +433,13 @@ function XLVersion() {
         <div style={styles.sectionLeft}><p style={styles.sectionLabel}>Parts list</p></div>
         <div style={styles.sectionRight}>
           <PartsTable parts={[
-            { item: "Raspberry Pi Zero 2W", cost: "£15", note: <span>From <a href="https://thepihut.com/products/raspberry-pi-zero-2" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-zero-2-w" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Includes Wi-Fi.</span> },
+            { item: "Raspberry Pi 3A+", cost: "£25", note: <span>From <a href="https://thepihut.com/products/raspberry-pi-3-model-a-plus" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-3-a-plus" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. More powerful than the Zero 2W, with better live view performance.</span> },
             { item: "Raspberry Pi Camera Module 3", cost: "£25", note: <span>12MP, autofocus. From <a href="https://thepihut.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a> or <a href="https://shop.pimoroni.com/products/raspberry-pi-camera-module-3" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Pimoroni</a>. Excellent low-light performance.</span> },
             { item: "IKEA 365+ 600ml glass jar with lid", cost: "£4", note: <span>New from <a href="https://www.ikea.com/gb/en/search/?q=365%2B+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>IKEA</a> or reused from <a href="https://www.ebay.co.uk/sch/i.html?_nkw=ikea+365+600ml+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>eBay</a> or <a href="https://www.vinted.co.uk/catalog?search_text=ikea+365+jar" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Vinted</a>.</span> },
             { item: "INIU Pocket Rocket P50 Power Bank (10,000mAh)", cost: "£12–18", note: <span>45W, compact form factor, fits inside the 600ml jar. From <a href="https://www.amazon.co.uk/s?k=INIU+Pocket+Rocket+P50" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>. Provides 4–6 hours of runtime.</span> },
             { item: "Power Bank KeepAlive (Adjustable)", cost: "£7.50", note: <span>Prevents the power bank from auto-shutting off at low current draw. From <a href="https://thepihut.com/products/power-bank-keepalive-adjustable" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>The Pi Hut</a>. Connect between power bank output and Pi power input.</span> },
-            { item: "USB-A to micro-USB cable (5m)", cost: "£6–8", note: <span>Data tether to laptop for live view. One end will be cut — buy a cheap cable from <a href="https://www.amazon.co.uk/s?k=usb+a+to+micro+usb+5m" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>, not a premium one.</span> },
-            { item: "Short USB-C pigtail cable (20–30cm)", cost: "£2–3", note: <span>Connects inside the jar from the Wago terminals to the Pi's data port. Search <a href="https://www.amazon.co.uk/s?k=short+usb-c+cable+20cm" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>'short USB-C cable' on Amazon</a>.</span> },
+            { item: "USB-A to USB-A cable (5m, data-only)", cost: "£6–8", note: <span>Data tether to laptop for live view. The 5V wire must be snipped before use — buy a cheap cable from <a href="https://www.amazon.co.uk/s?k=usb+a+to+usb+a+cable+5m" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Amazon</a>. See wiring instructions.</span> },
+            { item: "Short USB-A pigtail cable (20–30cm)", cost: "£2–3", note: <span>Connects inside the jar from the Wago terminals to the Pi's USB-A port. Search <a href="https://www.amazon.co.uk/s?k=short+usb+a+male+cable+20cm" target="_blank" rel="noopener noreferrer" style={styles.partsLink">'short USB-A cable' on Amazon</a>.</span> },
             { item: "Wago 221 MINI connectors (4-wire, x4)", cost: "£3–5", note: <span>Joins tether cable to pigtail inside the jar. One connector per wire: VCC, GND, D+, D−. Search <a href="https://www.amazon.co.uk/s?k=wago+221+mini" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>Wago 221 MINI on Amazon</a>.</span> },
             { item: "Two colours of rope or paracord (1m each)", cost: "£2–3", note: "Orientation indicator — one colour per side of lid." },
             { item: "PG7 waterproof cable gland", cost: "£1–2", note: <span>Fits cables 3–6.5mm diameter. Search <a href="https://www.amazon.co.uk/s?k=PG7+cable+gland+waterproof" target="_blank" rel="noopener noreferrer" style={styles.partsLink}>PG7 cable gland on Amazon</a>.</span> },
@@ -509,7 +509,7 @@ function XLVersion() {
               Insert your microSD card. In Imager, choose:
             </p>
             <div style={styles.codeBlock}>
-              Device: Raspberry Pi Zero 2W{"\n"}
+              Device: Raspberry Pi 3A+{"\n"}
               OS: Raspberry Pi OS Lite (64-bit){"\n"}
               Storage: your microSD card
             </div>
@@ -540,7 +540,7 @@ function XLVersion() {
             </p>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Click <strong style={{ color: ACCENT }}>Save</strong>, then <strong style={{ color: ACCENT }}>Write</strong> and confirm.
-              Once complete, eject the card and insert it into the Pi Zero 2W.
+              Once complete, eject the card and insert it into the Pi 3A+.
             </p>
           </Step>
 
@@ -551,15 +551,18 @@ function XLVersion() {
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Open <strong style={{ color: ACCENT }}>config.txt</strong> and add this line at the very bottom:
             </p>
-            <div style={styles.codeBlock}>dtoverlay=dwc2</div>
+            <div style={styles.codeBlock}>dtoverlay=dwc2,dr_mode=peripheral</div>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Note the extra <code>dr_mode=peripheral</code> — this is required on the 3A+ because its USB port defaults to host mode. Without it, gadget mode will not activate.
+            </p>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
               Open <strong style={{ color: ACCENT }}>cmdline.txt</strong>. This is a single line of text — do not add a new line.
               Find the word <code>rootwait</code> and add the following immediately after it, with a single space before and after:
             </p>
             <div style={styles.codeBlock}>modules-load=dwc2,g_ether</div>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Eject the SD card safely, insert it into the Pi, then connect the Pi's data micro-USB port to your laptop using a data-capable USB cable.
-              (On the Pi Zero 2W, the data port is the one closest to the mini-HDMI port — not the power-only port at the edge.)
+              Eject the SD card safely and insert it into the Pi 3A+.
+              Connect the Pi's USB-A port to your laptop using the data-only tether cable (see Step 08 for how to prepare this cable before use).
               The Pi will boot and appear on your laptop as a USB ethernet device called <em>RNDIS/Ethernet Gadget</em>.
               This may take up to 90 seconds on first boot.
             </p>
@@ -598,7 +601,7 @@ function XLVersion() {
 
           <Step num="03" title="Connect and test the camera module">
             <p style={styles.stepBody}>
-              Connect the Camera Module 3 to the Pi Zero's CSI ribbon cable port.
+              Connect the Camera Module 3 to the Pi 3A+'s CSI ribbon cable port.
               The connector is fragile — lift the latch gently, insert the ribbon cable with contacts facing away from the latch, and press the latch back down.
               Once SSH'd in, test the camera:
             </p>
@@ -712,20 +715,27 @@ function XLVersion() {
             </p>
           </Step>
 
-          <Step num="08" title="Splice the tether cable and route through the gland">
+          <Step num="08" title="Prepare and splice the tether cable">
             <p style={styles.stepBody}>
-              Cut the micro-USB plug off one end of the 5m tether cable. Feed the cut end through the PG7 gland
+              <strong style={{ color: WARN }}>Before anything else — snip the 5V wire.</strong> The 3A+ is powered by the internal power bank.
+              If the tether cable also carries 5V from your laptop, two power sources will conflict and could damage the Pi or laptop.
+              Strip a small section of the cable's outer sheath near one end to expose the four internal wires: VCC (red), GND (black), D+ (green), D− (white).
+              Cut the VCC (red) wire completely and fold both ends back — do not connect it at either end.
+              Wrap the cut ends individually in electrical tape to prevent any contact.
+            </p>
+            <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
+              Now cut the USB-A plug off one end of the cable. Feed the cut end through the PG7 gland
               from outside the jar, leaving enough slack inside to reach the centre of the jar comfortably.
               Tighten the gland cap to grip the cable body — hand-tight only.
             </p>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Strip the outer sheath and then each individual wire inside — you should find four: VCC (red), GND (black), D+ (green), D− (white).
-              Do the same for the short USB-C pigtail cable that will connect to the Pi.
+              Strip the remaining three wires inside the jar (GND, D+, D−).
+              Do the same for the short USB-A pigtail cable that will connect to the Pi.
               Join matching wires using Wago 221 MINI connectors — one connector per wire.
               Push each pair of stripped wires into opposite sides of the connector until they click.
             </p>
             <p style={{ ...styles.stepBody, marginTop: "1rem" }}>
-              Connect the pigtail's intact USB-C plug to the Pi's data port.
+              Connect the pigtail's intact USB-A plug to the Pi's USB-A port.
               The outside end of the tether cable runs up to your laptop at the surface for live view.
             </p>
           </Step>
@@ -766,9 +776,10 @@ function XLVersion() {
 
       <Principles items={[
         { title: "Rope orientation", body: "As with the Lite version, the two-colour rope system tells you which way the camera is pointing. Always note or photograph which colour is on which side before deployment." },
-        { title: "Heat management", body: "The Pi Zero 2W generates heat. In warm water or direct sun, limit deployments to under 2 hours. The sealed glass jar provides no active cooling." },
-        { title: "PG7 gland and Wago splice", body: "The tether cable enters the jar through a PG7 gland — hand-tighten only. Inside, the four wires (VCC, GND, D+, D−) are joined to a short pigtail using Wago 221 MINI connectors. If live view is unstable, the Wago connections on D+ and D− are the first thing to check." },
-        { title: "USB gadget mode", body: "Live view runs over USB gadget ethernet — no Wi-Fi needed in the field. The Pi presents itself as a network adapter to your laptop over the tether cable. Make sure your laptop has VPN software disabled when connecting, as VPNs can interfere with the USB network interface." },
+        { title: "Heat management", body: "The Pi 3A+ generates more heat than the Zero 2W under load. In warm water or direct sun, limit deployments to under 2 hours. The sealed glass jar provides no active cooling." },
+        { title: "PG7 gland and Wago splice", body: "The tether cable enters the jar through a PG7 gland — hand-tighten only. Inside, three wires (GND, D+, D−) are joined to a short pigtail using Wago 221 MINI connectors. The VCC wire is intentionally cut and isolated. If live view is unstable, the Wago connections on D+ and D− are the first thing to check." },
+        { title: "USB gadget mode", body: "Live view runs over USB gadget ethernet — no Wi-Fi needed in the field. The 3A+ requires dr_mode=peripheral in config.txt to force the USB port into device mode. Make sure your laptop has VPN software disabled when connecting, as VPNs can interfere with the USB network interface." },
+        { title: "5V wire", body: "The red VCC wire in the tether cable must be cut and isolated before use. The Pi is powered by the internal power bank — if the laptop also supplies 5V via the tether, two power sources will conflict. This is a one-time preparation step." },
         { title: "Microplastics", body: "The XL requires more drilling than the Lite — two rope holes and one cable gland hole. Collect all swarf on paper and bag it for general waste. Never allow particles near water." },
       ]} />
     </>
